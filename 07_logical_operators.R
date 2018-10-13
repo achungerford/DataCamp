@@ -39,7 +39,6 @@ facebook <= linkedin
 
 
 # comparison operators: & = and ; | = or ; ! = not
-
 x <- 12
 
 x > 5 & x < 15
@@ -80,7 +79,6 @@ a <- c(TRUE, TRUE, FALSE)
 b <- c(TRUE, FALSE, FALSE)
 
 a & b
-
 a && b
 
 a | b
@@ -94,6 +92,7 @@ a || b
 
 last <- tail(linkedin, 1)
 last
+
 # is last less than 5 or above 10?
 last < 5 | last > 10
 
