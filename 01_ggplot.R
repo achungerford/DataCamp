@@ -4,14 +4,14 @@
 # 
 # created: 13 October 2018
 #
-# course: Data Visualization with ggplot2 
+# course: Data Visualization with ggplot2 - Introduction
 
 
 library(tidyverse)
-load("gg_diamonds.RData")
-load("gg_fish.RData")
-load("gg_recess.RData")
 data("mtcars")
+load("gg_diamonds.RData")
+# load("gg_fish.RData")
+# load("gg_recess.RData")
 
 
 ############################## Mtcars #########################################
@@ -43,17 +43,43 @@ ggplot(mtcars, aes(x = wt, y = mpg, size = disp)) +
 
 
 
-######################### Iris Dataset ########################################
-
-
-
 ######################## Diamonds df subset  ##################################
+
+# need to change the default color palette bc its not good for visualization
 
 ggplot(diamonds, aes(x = carat, y = price)) +
   geom_point() +
   geom_smooth()
 
+# same plot, no points, just smooth line
+ggplot(diamonds, aes(x = carat, y = price)) +
+  geom_smooth()
 
+# same plot, map clarity to color
+ggplot(diamonds, aes(x = carat, y = price, color = clarity)) +
+  geom_smooth()
+
+# same plot, same color setting, plot only points with alpha
+ggplot(diamonds, aes(x = carat, y = price, color = clarity)) +
+  geom_point(alpha = 0.4)
+
+
+# same basic plot, no points
+dia_plot <- ggplot(diamonds, aes(x = carat, y = price))
+dia_plot
+
+# include points in a different way
+dia_plot + geom_point()
+
+# include aesthetics a different way
+dia_plot + geom_point(aes(color = clarity))
+
+
+# add geom_point with alpha 0.2 to dia_plot
+dia_plot_2 <- dia_plot + geom_point(alpha = 0.2)
+
+# plot with geom_smooth, with se = FALSE; se prevents error shading
+dia_plot_2 + geom_smooth(aes(color = clarity), se = FALSE)
 
 
 ######################### Notes ############################################
@@ -61,8 +87,9 @@ ggplot(diamonds, aes(x = carat, y = price)) +
 # factor() turned a numeric variable into categorical
 
 # ggplot( shape = someCategoricalVar )
-# 
-# 
+
+# RData files preserve the R data structures of your data.
+# filename.RData    --> load("filename.RData") 
 
 
 
@@ -76,7 +103,8 @@ ggplot(diamonds, aes(x = carat, y = price)) +
 #   data          ggplot(df, )
 # 
 # 
-# 
+# geom_smooth()
+#    smoothing method to use, eg: lm, glm, gam, loess, Mass::rlm
 
 
 
