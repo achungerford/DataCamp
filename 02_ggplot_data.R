@@ -5,13 +5,16 @@
 # created: 13 October 2018
 #
 # course: Data Visualization with ggplot2 - Data
+###############################################################################
 
 # load libraries & packages
 library(tidyverse)
 
-# load data
+# import pre-loaded datasets
 data("mtcars")
 data("iris")
+
+# how to import datasets that are .RData files
 load("gg_diamonds.RData")
 # load("gg_fish.RData")
 # load("gg_recess.RData")
@@ -19,7 +22,6 @@ load("gg_diamonds.RData")
 
 # There is an advantage to plotting out a graph with just the df and aes(), bc
 # you can always add the other layers later
-
 
 
 ################################## Base R #####################################
@@ -70,6 +72,9 @@ legend(x = 5,
        pch = 1,
        bty = "n")
 
+
+
+
 #################### the ggplot way ###########################################
 
 # plot 1: scatterplot -- geom_point
@@ -94,25 +99,35 @@ ggplot(mtcars, aes(x = wt, y = mpg, col = cyl)) +
 
 
 
+############################### iris dataset ##################################
 
+str(iris)
+View(iris)
 
+# create a petal df & sepal df
+# remove sepal columns, include Part column, rename and reorder
+iris.petal <- select(iris, -contains("Sepal")) %>%
+                  mutate(Part = "Petal") %>%
+                  rename(Length = Petal.Length, Width = Petal.Width) %>%
+                  select(Species, Part, Length, Width)
 
+iris.sepal <- select(iris, -contains("Petal")) %>%
+                  mutate(Part = "Sepal") %>%
+                  rename(Length = Sepal.Length, Width = Sepal.Width) %>%
+                  select(Species, Part, Length, Width)
 
+# stack the petal and sepal dataframes vertically
+iris.wide <- bind_rows(iris.petal, iris.sepal)
+View(iris.wide)
 
+# doesn't tell us anything
+ggplot(iris.wide, aes(x = Species , y = Length, color = Part)) +
+  geom_point()
 
+# more useful, but not great
+ggplot(iris.wide, aes(x = Length, y = Width, color = Part)) +
+  geom_point()
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+ggplot(iris.wide, aes(x = Width, y = Length, color = Part)) +
+  geom_point()
 
