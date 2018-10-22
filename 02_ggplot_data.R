@@ -5,6 +5,24 @@
 # created: 13 October 2018
 #
 # course: Data Visualization with ggplot2 - Data
+#
+# Summary:
+#  loading .RData files
+#  stacking dataframes vertically: bind_rows(df1, df2)
+#  plotting data with linear model trendlines
+#  faceting in ggplot: creating plots side-by-side
+#  geom_jitter() in ggplot
+# 
+#  gather() moves information from the columns to the rows
+#
+#  separate() 
+#  splits one column into two or more according to a pattern you define
+# 
+#  Base R vs. dplyr
+#     data.frame() # Base R
+#     data_frame() # dplyr
+#
+# 
 ###############################################################################
 
 # load libraries & packages
@@ -62,8 +80,7 @@ lapply(mtcars$cyl, function(x){
   abline(lm(mpg ~ wt,
             mtcars,
             subset = (cyl == x)),
-         col = x)
-})
+         col = x)})
 
 legend(x = 5,
        y = 33,
@@ -116,18 +133,37 @@ iris.sepal <- select(iris, -contains("Petal")) %>%
                   rename(Length = Sepal.Length, Width = Sepal.Width) %>%
                   select(Species, Part, Length, Width)
 
-# stack the petal and sepal dataframes vertically
-iris.wide <- bind_rows(iris.petal, iris.sepal)
+# create iris.wide df by stacking the sepal and petal dfs vertically
+iris.wide <- bind_rows(iris.sepal, iris.petal)
 View(iris.wide)
 
-# doesn't tell us anything
-ggplot(iris.wide, aes(x = Species , y = Length, color = Part)) +
-  geom_point()
+# begin creation of iris.tidy by stacking the iris.wide df
+iris.tidy <- bind_rows(iris.wide, iris.wide) %>%
+  select("Species", "Part")
 
-# more useful, but not great
-ggplot(iris.wide, aes(x = Length, y = Width, color = Part)) +
-  geom_point()
+# combine Length and Width columns into a Value vector for iris.tidy
+Value <- c(pull(iris.wide, "Length"), pull(iris.wide, "Width"))
 
-ggplot(iris.wide, aes(x = Width, y = Length, color = Part)) +
-  geom_point()
+# creating Measure vector for iris.tidy
+Measure <- c(rep("Length", 300), rep("Width", 300))
 
+# make new variables in iris.tidy
+iris.tidy <- iris.tidy %>%
+  mutate(Measure = Measure, Value = Value)
+
+# create two plots, Length & Width, 
+ggplot(iris.tidy, aes(x = Species, y = Value, col = Part)) +
+  geom_jitter() +
+  facet_grid(. ~ Measure)
+
+
+#################### creating iris.tidy Datacamp way ##########################
+
+# gather() 
+# takes multiple columns and gathers them into a single column by adding rows
+# rearranges the data frame by specifying the columns that are
+# categorical variables with a "-" notation
+
+
+
+# separate()
