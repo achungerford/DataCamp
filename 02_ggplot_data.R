@@ -121,40 +121,65 @@ ggplot(mtcars, aes(x = wt, y = mpg, col = cyl)) +
 str(iris)
 View(iris)
 
-# create a petal df & sepal df
-# remove sepal columns, include Part column, rename and reorder
-iris.petal <- select(iris, -contains("Sepal")) %>%
-                  mutate(Part = "Petal") %>%
-                  rename(Length = Petal.Length, Width = Petal.Width) %>%
-                  select(Species, Part, Length, Width)
+# create the iris.wide df using gather() & separate() from tidyr package
+iris.wide <- gather(iris, "Length", "Width", -Species) %>%
+  separate("Length", c("Part", "Length"), "\\.")
 
-iris.sepal <- select(iris, -contains("Petal")) %>%
-                  mutate(Part = "Sepal") %>%
-                  rename(Length = Sepal.Length, Width = Sepal.Width) %>%
-                  select(Species, Part, Length, Width)
+# create the iris.tidy df using gather() and separate() from tidyr package
+iris.tidy <- gather(iris, "Measure", "Value", -Species) %>%
+  separate("Measure", c("Part", "Measure"), "\\.")
 
-# create iris.wide df by stacking the sepal and petal dfs vertically
-iris.wide <- bind_rows(iris.sepal, iris.petal)
-View(iris.wide)
-
-# begin creation of iris.tidy by stacking the iris.wide df
-iris.tidy <- bind_rows(iris.wide, iris.wide) %>%
-  select("Species", "Part")
-
-# combine Length and Width columns into a Value vector for iris.tidy
-Value <- c(pull(iris.wide, "Length"), pull(iris.wide, "Width"))
-
-# creating Measure vector for iris.tidy
-Measure <- c(rep("Length", 300), rep("Width", 300))
-
-# make new variables in iris.tidy
-iris.tidy <- iris.tidy %>%
-  mutate(Measure = Measure, Value = Value)
-
-# create two plots, Length & Width, 
+# Create two plots side-by-side, Length, Width. Color by part (petal or sepal).
 ggplot(iris.tidy, aes(x = Species, y = Value, col = Part)) +
   geom_jitter() +
   facet_grid(. ~ Measure)
+
+
+# ####################### My Improvised Way ###################################
+# 
+# # my long, improvised way of creating iris.wide and iris.tidy before
+# # I knew about the gather() and separate() functions.
+# 
+# # create a petal df & sepal df
+# # remove sepal columns, include Part column, rename and reorder
+# iris.petal <- select(iris, -contains("Sepal")) %>%
+#                   mutate(Part = "Petal") %>%
+#                   rename(Length = Petal.Length, Width = Petal.Width) %>%
+#                   select(Species, Part, Length, Width)
+# 
+# iris.sepal <- select(iris, -contains("Petal")) %>%
+#                   mutate(Part = "Sepal") %>%
+#                   rename(Length = Sepal.Length, Width = Sepal.Width) %>%
+#                   select(Species, Part, Length, Width)
+# 
+# # create iris.wide df by stacking the sepal and petal dfs vertically
+# iris.wide <- bind_rows(iris.sepal, iris.petal)
+# View(iris.wide)
+# 
+# # begin creation of iris.tidy by stacking the iris.wide df
+# iris.tidy <- bind_rows(iris.wide, iris.wide) %>%
+#   select("Species", "Part")
+# 
+# # combine Length and Width columns into a Value vector for iris.tidy
+# Value <- c(pull(iris.wide, "Length"), pull(iris.wide, "Width"))
+# 
+# # creating Measure vector for iris.tidy
+# Measure <- c(rep("Length", 300), rep("Width", 300))
+# 
+# # make new variables in iris.tidy
+# iris.tidy <- iris.tidy %>%
+#   mutate(Measure = Measure, Value = Value)
+# 
+# # create two plots, Length & Width, 
+# ggplot(iris.tidy, aes(x = Species, y = Value, col = Part)) +
+#   geom_jitter() +
+#   facet_grid(. ~ Measure)
+# 
+# 
+############################ End Improvised ###################################
+
+
+
 
 
 #################### creating iris.tidy Datacamp way ##########################
@@ -165,6 +190,5 @@ ggplot(iris.tidy, aes(x = Species, y = Value, col = Part)) +
 # categorical variables with a "-" notation
 
 iris.tidy.dc <-
-  gather(iris, key = Measure, Value, -Species) %>%
-  separate(Measure, c("Part", "Measure"), "\\.")
-head(iris.tidy.dc)
+  gather(iris, "Measure", "Value", -Species) %>%
+  separate("Measure", c("Part", "Measure"), "\\.")
