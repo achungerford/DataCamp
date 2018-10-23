@@ -49,7 +49,37 @@ while(ctr <= 7){
 }
 
 
+# if-else nested inside a while loop
+speed <- 64
 
+while (speed > 30) {
+  print(paste("Your speed is",speed))
+  if (speed > 48 ) {
+    print(paste("Slow down big time!"))
+    speed <- speed - 11
+  } else {
+    print(paste("Slow down!"))
+    speed<- speed -6
+  }
+}
+
+
+# if-else nested inside a while loop with a break statement
+speed <- 88
+
+while(speed > 30){
+  print(paste("Your speed is", speed))
+  
+  # break the loop if speed exceeds 80
+  if(speed > 80){
+    break
+  }
+  
+  if(speed > 48){
+    print(paste("Slow down big time!"))
+    speed <- speed - 11
+  }
+}
 
 
 
