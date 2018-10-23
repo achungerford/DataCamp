@@ -134,6 +134,7 @@ ggplot(iris.tidy, aes(x = Species, y = Value, col = Part)) +
   geom_jitter() +
   facet_grid(. ~ Measure)
 
+############################## END ############################################
 
 # ####################### My Improvised Way ###################################
 # 
@@ -179,16 +180,15 @@ ggplot(iris.tidy, aes(x = Species, y = Value, col = Part)) +
 ############################ End Improvised ###################################
 
 
-
-
-
 #################### creating iris.tidy Datacamp way ##########################
-
-# gather() 
-# takes multiple columns and gathers them into a single column by adding rows
-# rearranges the data frame by specifying the columns that are
-# categorical variables with a "-" notation
-
-iris.tidy.dc <-
-  gather(iris, "Measure", "Value", -Species) %>%
-  separate("Measure", c("Part", "Measure"), "\\.")
+# 
+# # gather() 
+# # takes multiple columns and gathers them into a single column by adding rows
+# # rearranges the data frame by specifying the columns that are
+# # categorical variables with a "-" notation
+# 
+# iris.tidy.dc <-
+#   gather(iris, "Measure", "Value", -Species) %>%
+#   separate("Measure", c("Part", "Measure"), "\\.")
+# 
+###############################################################################
