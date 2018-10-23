@@ -1,11 +1,5 @@
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# Title: Loops
+#
+# Title: whiile Loops
 #
 # Summary:
 #   crtl-C terminates a while loop
