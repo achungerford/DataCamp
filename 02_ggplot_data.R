@@ -164,6 +164,7 @@ ggplot(iris.tidy, aes(x = Species, y = Value, col = Part)) +
 # rearranges the data frame by specifying the columns that are
 # categorical variables with a "-" notation
 
-
-
-# separate()
+iris.tidy.dc <-
+  gather(iris, key = Measure, Value, -Species) %>%
+  separate(Measure, c("Part", "Measure"), "\\.")
+head(iris.tidy.dc)
