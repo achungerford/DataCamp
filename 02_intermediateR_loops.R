@@ -23,22 +23,30 @@
 # }
 
 
-# example
+# example 1
 ctr <- 1
 while(ctr <= 5){
   print(paste("ctr is set to", ctr))
   ctr <- ctr + 1
 }
 
-# break statement example: terminate loop as soon as ctr is divisible by 5.
-ctr <- 0
-while(ctr <= 7){
-  if(ctr %% 5 == 0)
-    break
+# example 2
+speed <- 64
+while(speed >= 30){
+  print(paste("Slow down!"))
+  speed <- speed -7
 }
-print(paste("ctr is set to", ctr))
 
 
+# break statement example: terminate loop as soon as ctr is divisible by 5.
+ctr <- 1
+while(ctr <= 7){
+  if(ctr %% 5 == 0){
+    break
+  }
+  print(paste("ctr is set to", ctr))
+  ctr <- ctr + 1
+}
 
 
 
