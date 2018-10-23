@@ -83,6 +83,19 @@ while(speed > 30){
 
 
 
+# create a while loop from scratch, where if the triple of i
+# is divisible by 8, break out of the loop
+i <- 1
+
+while(i <= 10){
+  print(i * 3)
+  
+  if((i * 3) %% 8 == 0){
+    break
+  }
+  i <- i + 1
+}
+
 
 
 
