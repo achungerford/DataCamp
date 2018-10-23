@@ -122,9 +122,10 @@ str(iris)
 View(iris)
 
 # create the iris.wide df using gather() & separate() from tidyr package
-iris.wide <- gather(iris, "Length", "Width", -Species) %>%
-  separate("Length", c("Part", "Length"), "\\.")
+iris.wide <- gather(iris, "Measure", "Value", -Species) %>%
+  separate("Measure", c("Part", "Measure"), "\\.")
 
+  
 # create the iris.tidy df using gather() and separate() from tidyr package
 iris.tidy <- gather(iris, "Measure", "Value", -Species) %>%
   separate("Measure", c("Part", "Measure"), "\\.")
@@ -133,6 +134,12 @@ iris.tidy <- gather(iris, "Measure", "Value", -Species) %>%
 ggplot(iris.tidy, aes(x = Species, y = Value, col = Part)) +
   geom_jitter() +
   facet_grid(. ~ Measure)
+
+# another plot, use iris.wide
+ggplot(iris.wide, aes(x = Length, y = Width, col = Part)) +
+  geom_jitter() +
+  facet_grid(. ~ Species)
+
 
 ############################## END ############################################
 
