@@ -94,5 +94,18 @@ for(i in 1:length(cities)){
 
 
 
+# again looping over a list
+nyc <- list(pop = 8405837, 
+            boroughs = c("Manhattan", "Bronx", "Brooklyn", "Queens", "Staten Island"), 
+            capital = FALSE)
+
+for(i in nyc){
+  print(i)
+}
+
+# same as above, but notice the need for the double brackets
+for(i in 1:length(nyc)){
+  print(nyc[[i]])
+}
 
 
