@@ -73,9 +73,24 @@ for(city in cities){
 
 
 # another way to loop over data: for loop v2.0
+# imagine that instead of just printing out the city name, we also want
+# to give information about the city's position in the vector
 
 
+cities <- c("New York", "Paris",
+            "London", "Tokyo",
+            "Rio de Janiero", "Cape Town")
 
+# now we let i progress from 1 to the length of the vector, 6, by steps of 1
+# this way it's asier to add more information to the loop
+for(i in 1:length(cities)){
+  print(cities[i])
+}
+
+# more info
+for(i in 1:length(cities)){
+  print(paste(cities[i], "is on position ", i, " in the cities vector."))
+}
 
 
 
