@@ -120,11 +120,6 @@ ggplot(mtcars, aes(x = wt, y = mpg, col = cyl)) +
 
 str(iris)
 View(iris)
-
-# create the iris.wide df using gather() & separate() from tidyr package
-iris.wide <- gather(iris, "Measure", "Value", -Species) %>%
-  separate("Measure", c("Part", "Measure"), "\\.")
-
   
 # create the iris.tidy df using gather() and separate() from tidyr package
 iris.tidy <- gather(iris, "Measure", "Value", -Species) %>%
@@ -134,6 +129,16 @@ iris.tidy <- gather(iris, "Measure", "Value", -Species) %>%
 ggplot(iris.tidy, aes(x = Species, y = Value, col = Part)) +
   geom_jitter() +
   facet_grid(. ~ Measure)
+
+# create the iris.wide df using gather(), separate(), and spread()
+# first, we must create a new unique row identifier (index) column.
+iris$Flower <- 1:nrow(iris)
+
+iris.wide <- iris %>%
+  gather(key, value, -Species, -Flower) %>%
+  separate(key, c("Part", "Measure"), "\\.") %>%
+  spread(Measure, value)
+
 
 # another plot, use iris.wide
 ggplot(iris.wide, aes(x = Length, y = Width, col = Part)) +
