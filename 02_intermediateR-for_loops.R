@@ -6,9 +6,19 @@
 # Date: 24 October 2018
 # 
 # 
+# for loop
+# for loop over a list
+# for loop over a list using index information
 # 
+# for loop with nested if-statement
+# for loop, nested if, with break
+# for loop, nested if, with a next-statement
 # 
-# 
+# create simple matrix
+# fill-in specific matrix cells
+#
+# for loop nested in another for loop
+
 
 
 # for(var in seq){
@@ -122,8 +132,10 @@ ttt[2, 3] = "O"
 ttt[3, 1] = "X"
 ttt[3, 3] = "X"
 
+# show matrix filled in
 ttt
 
+# tell us what is in each matrix cell
 for(i in 1:nrow(ttt)){
   for(j in 1:ncol(ttt)){
     print(paste("On row ", i, " and column ", j ," the board contains ", ttt[i,j]))
@@ -131,3 +143,39 @@ for(i in 1:nrow(ttt)){
 }
 
 
+# for loop, nested if-else
+linkedin <- c(16, 9, 13, 5, 2, 17, 14)
+
+# Code the for loop with conditionals
+for(li in linkedin){
+  if(li > 10){
+    print("You're popular!")
+  } else{
+    print("Be more visible!")
+  }
+  print(li)
+}
+
+
+# Adapt/extend the for loop
+for (li in linkedin){
+  if (li > 10) {
+    print("You're popular!")
+  } else {
+    print("Be more visible!")
+  }
+  
+  # Add if statement with break
+  if(li > 16){
+    print("This is ridiculous, I'm outta here!")
+    break
+  }
+  
+  # Add if statement with next
+  if(li < 5){
+    print("This is too embarrassing!")
+    next
+  }
+  
+  print(li)
+}
