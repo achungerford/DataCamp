@@ -28,8 +28,7 @@ library(tidyverse)
 # This makes them optional arguments.
 
 
-
-# The linkedin and facebook vectors have already been created for you
+# create linkedin and facebook vectors
 linkedin <- c(16, 9, 13, 5, 2, 17, 14)
 facebook <- c(17, 7, 5, 16, 8, 13, 14)
 
@@ -42,10 +41,22 @@ avg_sum
 avg_sum_trimmed <- mean(linkedin + facebook, 0.2)
 avg_sum_trimmed
 
-# Inspect both new variables
+# Inspect both new variables, notice the effect of trimming
 avg_sum
 avg_sum_trimmed
 
 
+# update the vectors with NA values
+linkedin <- c(16, 9, 13, 5, NA, 17, 14)
+facebook <- c(17, NA, 5, 16, 8, 13, 14)
+
+# basic average of linkedin before using other arguments
+mean(linkedin)
+
+# advanced version
+mean(linkedin, na.rm = TRUE)
+
+# mean asbsolute deviation: functions in functions, arguments by name
+mean(abs(linkedin - facebook), na.rm = TRUE)
 
 
