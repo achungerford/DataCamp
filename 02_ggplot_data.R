@@ -117,7 +117,7 @@ ggplot(mtcars, aes(x = wt, y = mpg, col = cyl)) +
 
 
 ############################### iris dataset ##################################
-
+data("iris")
 str(iris)
 View(iris)
   
