@@ -220,3 +220,7 @@ ggplot(iris.wide, aes(x = Length, y = Width, col = Part)) +
 # need to combine different data scources
 ggplot(iris) +
   geom_point(aes(x = Sepal.Length, y = Sepal.Width, col = Species))
+
+# usual way, aes is in the ggplot layer
+ggplot(iris, aes(x = Sepal.Length, y = Sepal.Width)) +
+  geom_point(col = "red")
