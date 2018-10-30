@@ -125,7 +125,10 @@ View(iris)
 iris.tidy <- gather(iris, "Measure", "Value", -Species) %>%
   separate("Measure", c("Part", "Measure"), "\\.")
 
-# Create two plots side-by-side, Length, Width. Color by part (petal or sepal).
+View(iris.tidy)
+
+# Create two plots side-by-side (faceting).
+# Length, Width. Color by part (petal or sepal).
 ggplot(iris.tidy, aes(x = Species, y = Value, col = Part)) +
   geom_jitter() +
   facet_grid(. ~ Measure)
@@ -204,3 +207,16 @@ ggplot(iris.wide, aes(x = Length, y = Width, col = Part)) +
 #   separate("Measure", c("Part", "Measure"), "\\.")
 # 
 ###############################################################################
+
+
+
+
+
+
+
+################## NOTES SECTION ##############################################
+
+# calling aesthetics in the geom layer is typically only done if we
+# need to combine different data scources
+ggplot(iris) +
+  geom_point(aes(x = Sepal.Length, y = Sepal.Width, col = Species))

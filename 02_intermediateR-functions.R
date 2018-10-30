@@ -57,6 +57,10 @@ mean(linkedin)
 mean(linkedin, na.rm = TRUE)
 
 # mean asbsolute deviation: functions in functions, arguments by name
-mean(abs(linkedin - facebook), na.rm = TRUE)
+mean(abs(linkedin - facebook) , na.rm = TRUE)
 
 
+# mean(x, trim = 0, na.rm = FALSE, ...)
+# x is required; if you do not specify it, R will throw an error.
+# trim and na.rm are optional arguments: they have a default value
+# which is used if the arguments are not explicitly specified.
