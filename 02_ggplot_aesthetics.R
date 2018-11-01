@@ -77,7 +77,7 @@ ggplot(mtcars, aes(x = wt, y = mpg, fill = cyl, col = am)) +
 
 
 
-######################## DC examples that seem wrong ##########################
+######################## DC examples ##########################
 # Map cyl to size
 ggplot(mtcars, aes(x = wt, y = mpg, size = cyl)) + geom_point()
 
@@ -90,6 +90,29 @@ ggplot(mtcars, aes(x = wt, y = mpg, shape = cyl)) + geom_point()
 # Map cyl to labels
 ggplot(mtcars, aes(x = wt, y = mpg, label = cyl)) + geom_text()
 
+
+
+###############################################################################
+
+# Exercise: All About Attributes, Part 1
+# Define a hexadecimal color
+my_color <- "#4ABEFF"
+
+# Draw a scatter plot with color *aesthetic*
+ggplot(mtcars, aes(x = wt, y = mpg, col = cyl)) +
+  geom_point()
+
+# Same, but set color *attribute* in geom layer 
+ggplot(mtcars, aes(x = wt, y = mpg)) +
+  geom_point(col = my_color)
+
+# Set the fill aesthetic; color, size and shape attributes
+ggplot(mtcars, aes(x = wt,
+                   y = mpg,
+                   fill = cyl)) +
+  geom_point(col = my_color,
+             size = 10,
+             shape = 23)
 
 
 
