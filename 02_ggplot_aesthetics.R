@@ -77,6 +77,21 @@ ggplot(mtcars, aes(x = wt, y = mpg, fill = cyl, col = am)) +
 
 
 
+######################## DC examples that seem wrong ##########################
+# Map cyl to size
+ggplot(mtcars, aes(x = wt, y = mpg, size = cyl)) + geom_point()
+
+# Map cyl to alpha
+ggplot(mtcars, aes(x = wt, y = mpg, alpha = cyl)) + geom_point()
+
+# Map cyl to shape 
+ggplot(mtcars, aes(x = wt, y = mpg, shape = cyl)) + geom_point()
+
+# Map cyl to labels
+ggplot(mtcars, aes(x = wt, y = mpg, label = cyl)) + geom_text()
+
+
+
 
 
 ####################### NOTES #################################################
