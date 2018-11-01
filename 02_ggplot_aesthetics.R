@@ -41,6 +41,43 @@ ggplot(mtcars, aes(x = wt, y = mpg, col = cyl)) +
 ggplot(mtcars, aes(x = wt, y = mpg, fill = cyl)) +
   geom_point(shape = 21, size = 4, alpha = 0.6)
 
+# 3 - Map am to col in the above plot
+ggplot(mtcars, aes(x = wt, y = mpg, col = am)) +
+  geom_point(shape = 21, size = 4, alpha = 0.6)
+
+
+
+
+# Exercise: All About Aesthetics, Part 2
+
+# for this exercise, we converted some variables.
+# am and cyl are factors, wt is numeric
+mtcars$am <- as.factor(mtcars$am)
+mtcars$cyl <- as.factor(mtcars$cyl)
+
+class(mtcars$am)
+class(mtcars$cyl)
+class(mtcars$wt)
+
+# 1 - Map cyl to fill
+ggplot(mtcars, aes(x = wt, y = mpg, fill = cyl)) +
+  geom_point(shape = 1, size = 4)
+
+# 2 - Change shape and alpha of the points in the above plot (alpha = opacity)
+ggplot(mtcars, aes(x = wt, y = mpg, fill = cyl)) +
+  geom_point(shape = 21,
+             size = 4,
+             alpha = 0.6)
+
+# 3 - Map am to col in the above plot
+ggplot(mtcars, aes(x = wt, y = mpg, fill = cyl, col = am)) +
+  geom_point(shape = 21,
+             size = 4,
+             alpha = 0.6)
+
+
+
+
 
 ####################### NOTES #################################################
 # The color aesthetic typically changes the outside outline of an object 
@@ -52,7 +89,7 @@ ggplot(mtcars, aes(x = wt, y = mpg, fill = cyl)) +
 # 
 # Which shape to use? 
 # The default geom_point() uses shape = 19 (a solid circle with an outline the same 
-# colour as the inside). 
+# colour as the inside).
 # Good alternatives are shape = 1 (hollow) and shape = 16 (solid, no outline). 
 # These all use the col aesthetic (don't forget to set alpha for solid points).
 #
