@@ -130,8 +130,6 @@ ggplot(mtcars, aes(x = wt, y = mpg, fill = cyl)) +
 
 ###############################################################################
 
-
-
 # Exercise: Going All Out
 
 
