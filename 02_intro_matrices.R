@@ -1,8 +1,11 @@
 # 
 # author: Alexander C. Hungerford
+#
 # created: 14 September 2018
+#
+# title: Datacamp, Intro to R, Ch. 3 - Matrices
 # 
-# Summary:
+# summary:
 #   matrices - create, name, name columns & rows
 #     element selection
 #     row selection, column selection
@@ -15,8 +18,8 @@
 #   dimnames = naming rows and columns
 #   
 #
-#   
-# 
+
+
 
 ############ What is a Matrix #################################################
 # a matrix is a collection of elements of the same data type
@@ -206,5 +209,3 @@ prices
 # Select an entire column
 us.ticket.price <- prices[ , 1]
 us.ticket.price
-
-
