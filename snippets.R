@@ -8,8 +8,12 @@
 # description:
 #
 #   My most repeated code.
+#   Every snippet must be tab-indented. No spaces for indentation.
+#
+#
 
 
 # ggplot: basic scatterplot
-ggplot($dataframe, aes(x = $xvar, y = $yvar, col = $colorvar)) +
-  geom_point()
+snippet my_scatterplot
+  ggplot($df, aes(x = $xvar, y = $yvar , col = )) +
+    geom_point()
