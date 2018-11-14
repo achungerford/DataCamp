@@ -17,4 +17,5 @@
   ggplot(${1:df}, aes(x = ${2:x-axis}, y = ${3:y-axis})) +
     geom_point()
   
+# create table
   
