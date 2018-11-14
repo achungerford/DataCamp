@@ -22,6 +22,7 @@
 #     data.frame() # Base R
 #     data_frame() # dplyr
 #
+#  (.packages())  will display the packages loaded in the session
 # 
 ###############################################################################
 
@@ -224,3 +225,28 @@ ggplot(iris) +
 # usual way, aes is in the ggplot layer
 ggplot(iris, aes(x = Sepal.Length, y = Sepal.Width)) +
   geom_point(col = "red")
+
+# Position
+#   specifies how ggplot will adjust for overlapping bars or points in a single layer
+
+# the most straightforward position is 'identity' which is the default in scatterplots,
+# we can set it explicitly if we want: geom_point(position = 'identity')
+
+# 'identity' means the value in the df is exactly where the value will be positioned in the plot
+
+# What's the issue in Iris dataset?
+#   sepal's are measured to nearest mm. Even with only 150 datapoints, there is too much
+#   overplotting to distinguish them. To solve, we need to add in some random noise on both
+#   the x and y axes to see regions of high density. This is called JITTERING.
+
+# Jittering
+#   can be used as an argument, but each position type can also be accessed as a function.
+#   geom_point(position = 'jitter')
+#   
+#   example of using it in a function -- define it first
+#
+#   posn.j <- position_jitter(width = 0.1)
+#   ggplot(df, aes()) + geom_point(position = posn.j)
+
+# width - how much random noise should be added
+#
