@@ -14,6 +14,7 @@
 
 
 # ggplot: basic scatterplot
-snippet my_scatterplot
-  ggplot($df, aes(x = $xvar, y = $yvar , col = )) +
+  ggplot(${1:df}, aes(x = ${2:x-axis}, y = ${3:y-axis})) +
     geom_point()
+  
+  
