@@ -21,7 +21,6 @@
 
 
 
-
 ############ What is a Matrix #################################################
 # a matrix is a collection of elements of the same data type
 # (numeric, character, or logical) arranged into a fixed number
