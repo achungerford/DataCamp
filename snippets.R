@@ -21,3 +21,6 @@
   ggplot(${1:df}, aes(x = ${2:x-axis}, y = ${3:y-axis})) +
     geom_bar()
   
+# loading a .Rdata filetype
+  load(${1:"filename.Rdata"})
+
