@@ -155,9 +155,35 @@ ggplot(mtcars, aes(x = mpg,
 
 ###############################################################################
 
+# Exercise: Overplotting 1
 
+
+# Exercise: Overplotting 2
+load("gg_diamonds.RData")
+
+# scatterplot: x (carat), y (price), color (clarity)
+ggplot(diamonds, aes(x = carat, y = price, col = clarity)) +
+  geom_point()
+
+# adjusted for overplotting
+ggplot(diamonds, aes(x = carat, y = price, col = clarity)) +
+  geom_point(alpha = 0.5)
+
+
+
+# scatterplot: x (clarity), y (carat), color (price)
+# adjusted for overplotting
+ggplot(diamonds, aes(x = clarity, y = carat, col = price)) +
+  geom_point(alpha = 0.5)
+
+# scatterplot: x (clarity), y (carat), color (price)
+# adjusted for overplotting
+# with jittering
+ggplot(diamonds, aes(x = clarity, y = carat, col = price)) +
+  geom_point(alpha = 0.5, position = 'jitter')
 
 ####################### NOTES #################################################
+#
 # The color aesthetic typically changes the outside outline of an object 
 # and the fill aesthetic is typically the inside shading. However, 
 # as you saw in the last exercise, geom_point() is an exception. 
@@ -166,22 +192,25 @@ ggplot(mtcars, aes(x = mpg,
 # But it's a bit subtler than that.
 # 
 # Which shape to use? 
-# The default geom_point() uses shape = 19 (a solid circle with an outline the same 
-# colour as the inside).
-# Good alternatives are shape = 1 (hollow) and shape = 16 (solid, no outline). 
-# These all use the col aesthetic (don't forget to set alpha for solid points).
-#
+#   The default geom_point() uses shape = 19 (a solid circle with an outline the same
+#   colour as the inside).
+#   Good alternatives are shape = 1 (hollow) and shape = 16 (solid, no outline).
+#   These all use the col aesthetic (don't forget to set alpha for solid points).
+
 # A really nice alternative is shape = 21
-# which allows you to use both fill for the inside and col for the outline!
-# This is a great little trick for when you want to map two aesthetics to a dot.
+#   which allows you to use both fill for the inside and col for the outline!
+#   This is a great little trick for when you want to map two aesthetics to a dot.
 #
 
 
-
-
-
-
-
+# Overplotting issues with scatterplots
+#   1. Large datasets 
+#   2. Imprecise data (rounding) so points aren't clearly defined
+#   3. Interval data
+#   4. Aligned data values on a single axis
+#
+#   good idea to add transparency when you have solid shapes or
+#   use hollow shapes
 
 
 
