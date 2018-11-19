@@ -157,6 +157,25 @@ ggplot(mtcars, aes(x = mpg,
 
 # Exercise: Overplotting 1
 
+# Basic scatter plot:
+#   make cyl as.factor()
+#   x(wt), y (mgg), col (cyl)
+#   size = 4
+ggplot(mtcars, aes(x = wt, y = mpg, col = as.factor(cyl))) +
+  geom_point(size = 4)
+
+
+# Hollow circles - shape 1
+ggplot(mtcars, aes(x = wt, y = mpg, col = as.factor(cyl))) +
+  geom_point(size = 4, shape = 1)
+
+
+# Add transparency - alpha 0.6
+ggplot(mtcars, aes(x = wt, y = mpg, col = as.factor(cyl))) +
+  geom_point(size = 4, alpha = 0.6)
+
+
+###############################################################################
 
 # Exercise: Overplotting 2
 load("gg_diamonds.RData")
@@ -181,6 +200,8 @@ ggplot(diamonds, aes(x = clarity, y = carat, col = price)) +
 # with jittering
 ggplot(diamonds, aes(x = clarity, y = carat, col = price)) +
   geom_point(alpha = 0.5, position = 'jitter')
+
+
 
 ####################### NOTES #################################################
 #
