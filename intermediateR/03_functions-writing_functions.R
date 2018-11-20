@@ -36,7 +36,18 @@ fraction <- function(x, y){
 fraction(20, 2)
 
 
+# Example of a function that requires 2 arguments, but you're setting a default
+# value for one of the arguments
 
+# this would give you an error
+fraction(20)
 
+# but now we'll create a function where we use a default value
+magical <- function(x, y = 2){
+  x*y + x/y
+}
+
+# see, no error! because we set a default value for the second argument
+magical(4)
 
 
