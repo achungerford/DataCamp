@@ -51,3 +51,19 @@ magical <- function(x, y = 2){
 magical(4)
 
 
+# Avoiding pitfalls - like dividing by zero - put an if-statement in your function
+surprise <- function(x, y = 1){
+  if(y == 0){
+    return(0)
+  }
+  x*y + x/y
+}
+
+surprise(4, 1)
+surprise(4, 0)
+
+sum_abs <- function(x, y){
+  abs(x) + abs(y)
+}
+
+sum_abs(-2, 3)
