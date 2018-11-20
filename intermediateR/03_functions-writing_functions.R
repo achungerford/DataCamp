@@ -67,3 +67,12 @@ sum_abs <- function(x, y){
 }
 
 sum_abs(-2, 3)
+
+
+# functions with no arguments; print "Hi there!" and return TRUE.
+greet <- function(){
+  print("Hi there!")
+  return(TRUE)
+}
+
+greet()
