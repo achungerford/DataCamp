@@ -159,3 +159,20 @@ interpret(facebook[2])
 # what is "annoying" about the function 'interpret'? It only takes one argument
 
 # now, let's write a function that interprets the entire vector
+# using interpret() inside interpret_all(
+interpret_all <- function(views, return_sum = TRUE){
+  count <- 0
+  
+  for(v in views){
+    count <- count + interpret(v)
+  }
+  if(return_sum == TRUE){
+    return(count)
+  }else{
+    return(NULL)
+  }
+}
+# it appears that the sum of views on popular days
+# are the same for Facebook and LinkedIn, what a coincidence!
+interpret_all(linkedin)
+interpret_all(facebook)
