@@ -176,3 +176,17 @@ interpret_all <- function(views, return_sum = TRUE){
 # are the same for Facebook and LinkedIn, what a coincidence!
 interpret_all(linkedin)
 interpret_all(facebook)
+
+# show all the packages loaded in the environment
+search()
+
+# you have to load packages one at a time when using
+# load() and require()
+
+
+
+
+# NOTE: if character.only is set to TRUE, require() doesn't allow you to pass the
+# package you want to load as a simple name; you'll have to surround it with quotes
+#   library(data.table)
+#   require(rjson, character.only = TRUE)
