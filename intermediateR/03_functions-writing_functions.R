@@ -108,3 +108,37 @@ two_dice <- function() {
 }
 two_dice()
 dice1
+
+
+# R passes arguments to functions by value
+# What does this mean? Simply put, it means that an R function
+# cannot change the variable that you input to that function. 
+quarter <- function(x) {
+  x <- 0.25 * x
+  x
+}
+a <- 8
+quarter(a)
+a
+
+# notice that the value of a is not altered by what happens after sending
+# 'a' through the quarter function, that is bc we "passed 'a' by value"
+
+# had we "passed 'a' by reference" then the override of x inside the
+# function would ripple through 'a' outside the function.
+# But, R does not pass by reference, it passes by value.
+
+# notice the changes in values of a, b, and count as you call the function
+increment <- function(x, inc = 1) {
+  x <- x + inc
+  x
+}
+count <- 5
+a <- increment(count, 2)
+b <- increment(count)
+count <- increment(count, 2)
+
+
+
+
+
