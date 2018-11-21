@@ -91,3 +91,20 @@ pow_two()
 pow_two(5)
 pow_two(5, TRUE)
 pow_two(5, FALSE)
+
+# scope of a function
+# variables defined inside a function are not accessible outside the function
+# x and y are not available to us
+pow_two(4)
+y
+x
+
+# example 2
+two_dice <- function() {
+  possibilities <- 1:6
+  dice1 <- sample(possibilities, size = 1)
+  dice2 <- sample(possibilities, size = 1)
+  dice1 + dice2
+}
+two_dice()
+dice1
