@@ -24,3 +24,8 @@
 # loading a .Rdata filetype
   load(${1:"filename.Rdata"})
 
+# creating functions
+  ${1:functionName} <- function(${2:argument}){
+    ${3:body}
+  }
+  
