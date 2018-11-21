@@ -76,3 +76,18 @@ greet <- function(){
 }
 
 greet()
+
+
+pow_two <- function(x, print_info = TRUE){
+  y <- x ^ 2
+  if(print_info == TRUE){
+    print(paste(x, "to the power two equals", y))
+  }
+  return(y)
+}
+
+# notice the different outputs
+pow_two()
+pow_two(5)
+pow_two(5, TRUE)
+pow_two(5, FALSE)
