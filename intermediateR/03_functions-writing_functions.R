@@ -1,20 +1,13 @@
 # 
-# 
-# 
 # author: Alexander C. Hungerford
 # 
 # created: 20 November 2018
 # 
 # title: Datacamp
 #        Chapter 3 - Functions: writing functions
-# 
-# 
-# 
-# 
 
 
 # General form
-
 # functionName <- function(arg1, arg2){
 #   
 # }
@@ -182,9 +175,6 @@ search()
 
 # you have to load packages one at a time when using
 # load() and require()
-
-
-
 
 # NOTE: if character.only is set to TRUE, require() doesn't allow you to pass the
 # package you want to load as a simple name; you'll have to surround it with quotes

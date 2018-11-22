@@ -252,14 +252,5 @@ ggplot(iris, aes(x = Sepal.Length, y = Sepal.Width)) +
 
 
 
-# Overplotting issues with scatterplots
-#   1. Large datasets 
-#   2. Imprecise data (rounding) so points aren't clearly defined
-#   3. Interval data
-#   4. Aligned data values on a single axis
-#
-#   good idea to add transparency when you have solid shapes or
-#   use hollow shapes
-
 
 

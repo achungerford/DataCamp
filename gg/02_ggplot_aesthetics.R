@@ -1,6 +1,4 @@
-###############################################
-################# Summary #####################
-############################################### 
+#
 #
 # author: Alexander C. Hungerford
 # 
@@ -10,7 +8,7 @@
 #         Data Visualization with ggplot2
 #         Chapter 3: aesthetics
 # 
-############################################### 
+############################################################################### 
 
 # Note, plots will look different than the Datacamp course in color gradients.
 # It's not clear why, probably because of the version of ggplot that was used.
