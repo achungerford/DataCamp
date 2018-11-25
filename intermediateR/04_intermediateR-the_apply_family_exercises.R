@@ -43,3 +43,26 @@ select_second <- function(x){
 
 # apply it to split_low, assign to 'years'
 years <- lapply(split_low, select_second)
+
+
+######## Exercise 4.3: lapply() and anonymous functions #######################
+
+# defining functions to use them only once is overkill,
+# that's why you can use so-called anonymous functions in R
+# you don't name a function; this creates an "anonymous function"
+
+# use anonymous functions inside lapply() that select elements 1 and 2
+lapply(split_low, function(x){x[1]})
+lapply(split_low, function(x){x[2]})
+
+####### Exercise 4.4: use lapply() with additional arguments ##################
+
+
+
+
+
+
+
+
+
+
