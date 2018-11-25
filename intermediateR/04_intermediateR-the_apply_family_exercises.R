@@ -55,11 +55,21 @@ years <- lapply(split_low, select_second)
 lapply(split_low, function(x){x[1]})
 lapply(split_low, function(x){x[2]})
 
+
 ####### Exercise 4.4: use lapply() with additional arguments ##################
 
+# create a more generic function for selecting elements, similar to multiply()
+# from previous script
+select_el <- function(x, index){
+  x[index]
+}
+
+# use select_el() inside lapply() to get elements 1, 2 from the list split_low
+lapply(split_low, select_el, 1)
+lapply(split_low, select_el, 2)
 
 
-
+###### Exercise 4.5: 
 
 
 
