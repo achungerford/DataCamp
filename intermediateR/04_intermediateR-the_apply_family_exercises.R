@@ -28,5 +28,18 @@ str(split_low)
 
 ########## Exercise 4.2: Use lapply() with your own function ##################
 
+# write a function, select_first()
+select_first <- function(x){
+  x[1]
+}
 
+# apply function above to split_low, assign to 'names'
+names <- lapply(split_low, select_first)
 
+# write a function, select_second()
+select_second <- function(x){
+  x[2]
+}
+
+# apply it to split_low, assign to 'years'
+years <- lapply(split_low, select_second)
