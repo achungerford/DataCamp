@@ -44,6 +44,12 @@ lapply(cities, nchar)
 # if you want to convert the list to a vector, just wrap it in an unlist()
 unlist(lapply(cities, nchar))
 
-
-
-
+# you can use lapply() with functions you wrote yourself
+oil_prices <- list(2.37, 2.49, 2.18, 2.22, 2.47, 2.32)
+triple <- function(x){
+  3 * x
+}
+result <- lapply(oil_prices, triple)
+str(result)
+# make output a vector instead of list
+unlist(result)
