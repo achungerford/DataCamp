@@ -37,11 +37,12 @@ for(i in 1:length(cities)){
 num_chars
 
 # option 2 - less code
+# notice the output is a list, although the input was a vector
+# the output of lapply() always returns a list irrespective of the data structure
+lapply(cities, nchar)
 
-
-
-
-
+# if you want to convert the list to a vector, just wrap it in an unlist()
+unlist(lapply(cities, nchar))
 
 
 
