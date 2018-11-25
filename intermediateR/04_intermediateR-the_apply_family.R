@@ -21,5 +21,28 @@ for(info in nyc){
   print(class(info))
 }
 
-# less code
+# less code - calling class() over each of the list elements
 lapply(nyc, class)
+
+# example 2: city names
+cities <- c("New York", "Paris", "London", "Tokyo",
+            "Rio de Janeiro", "Cape Town")
+
+# suppose we want to build a vector of the same lenght as 'cities' above
+# option 1
+num_chars <- c()
+for(i in 1:length(cities)){
+  num_chars[i] <- nchar(cities[i])
+}
+num_chars
+
+# option 2 - less code
+
+
+
+
+
+
+
+
+
