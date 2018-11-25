@@ -10,6 +10,7 @@
 # 
 ###############################################################################
 
+library(tidyverse)
 data("mtcars")
 
 # Exercise: Scatterplots and Jittering (1)
