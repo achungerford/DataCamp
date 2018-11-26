@@ -69,10 +69,36 @@ lapply(split_low, select_el, 1)
 lapply(split_low, select_el, 2)
 
 
-###### Exercise 4.5: 
+###### Exercise 4.5: Apply functions that return NULL #########################
 
+# In all of the previous exercises, it was assumed that the functions
+# that were applied over vectors and lists actually returned
+# a meaningful result. For example, the tolower() function simply returns
+# the strings with the characters in lowercase. This won't always be the case.
+# Suppose you want to display the structure of every element of a list.
+# You could use the str() function for this, which returns NULL:
+# lapply(list(1, "a", TRUE), str)
+# This call actually returns a list, the same size as the input list,
+# containing all NULL values
 
+# On the other hand, if you call: str(TRUE)
+# it only prints the structure of the logical, not NULL.
+# why? Bc str() uses invisible() behind the scenes, which returns an
+# 'invisible copy' of the return value - NULL in this case.
 
+# Notice what this prints:
+lapply(split_low, function(x) {
+  if (nchar(x[1]) > 5) {
+    return(NULL)
+  } else {
+    return(x[2])
+  }
+})
 
-
-
+# if the number of characters in the first element (name)
+# of vector 'split_low' is bigger than 5, return a NULL,
+# otherwise, return the 2nd element of that vector (year)
+# gauss = 5 characters, return year
+# bayes = 5 characters, return year
+# pascal = 6 characters, return NULL
+# pearson = 6 characters, return NULL
