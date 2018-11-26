@@ -1,7 +1,7 @@
 #
 # author: Alexander C. Hungerford
 #
-# created: 24 November 2018
+# created: 25 November 2018
 # 
 # title: DataCamp
 #        Intermediate R
