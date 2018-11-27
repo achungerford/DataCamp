@@ -89,3 +89,42 @@ mean(c(abs(vec1), abs(vec2)))
 # of the trim argument. Therefore, merging the two vectors is a must!
 
 
+####################### Exercise: Data Utilities ##############################
+
+# The linkedin and facebook lists have already been created for you
+linkedin <- list(16, 9, 13, 5, 2, 17, 14)
+facebook <- list(17, 7, 5, 16, 8, 13, 14)
+
+# Convert linkedin and facebook to a vector: li_vec and fb_vec
+li_vec <- unlist(linkedin)
+fb_vec <- unlist(facebook)
+
+
+# Append fb_vec to li_vec: social_vec
+social_vec <- append(li_vec, fb_vec)
+
+# Sort social_vec from high to low
+sort(social_vec, decreasing = TRUE)
+
+
+################ Exercise: Find the Error (2) #################################
+
+# fix the following code: seq(rep(1, 7, by = 2), times = 7)
+rep(seq(1, 7, by = 2), times = 7)
+
+
+################ Exercise: Beat Gauss #########################################
+
+# using the function seq(), create a sequence that ranges from 1 to 500
+# in increments of 3. Assign the resulting vector to a variable seq1.
+seq1 <- seq(1, 500, by = 3)
+
+# Again with the function seq(), create a sequence that ranges from 1200 to 900
+# in increments of -7. Assign it to a variable seq2
+seq2 <- seq(1200, 900, -7)
+
+# Calculate the total sum of the sequences, either by using the sum() function
+# twice and adding the two results,
+# or by first concatenating the sequences and then using the sum() function once
+# Print the result to the console.
+sum(append(seq1, seq1))
