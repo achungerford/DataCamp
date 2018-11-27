@@ -5,7 +5,7 @@
 # 
 # title: DataCamp
 #        Intermediate R
-#        Ch. 4 - The Apply Family - useful functions
+#        Ch. 5 - Utilities - useful functions
 
 library(tidyverse)
 
