@@ -10,9 +10,10 @@
 
 
 library(tidyverse)
-data("iris", "mtcars")
+data("mtcars")
 load("gg_recess.RData")
 load("gg_fish.RData")
+load("gg_iris.RData")
 
 
 ###############################################################################
