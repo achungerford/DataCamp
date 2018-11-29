@@ -31,10 +31,7 @@
 #   expand_limits(y = 0)
 #   
 #   summarize functions: mean, median, min, max, sum
-#   
-#   
-#
-###############################################################################
+
 
 
 library(gapminder)

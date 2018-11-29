@@ -17,6 +17,10 @@ library(tidyverse)
 data(mtcars)
 View(mtcars)
 
+load("gg_diamonds.RData")
+load("gg_fish.RData")
+load("gg_recess.RData")
+load("gg_iris.RData")
 
 # 1 - Map mpg to x and cyl to y
 ggplot(mtcars, aes(x = mpg,y = cyl)) + geom_point()

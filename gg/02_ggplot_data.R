@@ -1,5 +1,3 @@
-# 
-# 
 # author: Alexander C. Hungerford
 # 
 # created: 13 October 2018
@@ -23,8 +21,7 @@
 #     data_frame() # dplyr
 #
 #  (.packages())  will display the packages loaded in the session
-# 
-###############################################################################
+
 
 # load libraries & packages
 library(tidyverse)
@@ -35,9 +32,9 @@ data("iris")
 
 # how to import datasets that are .RData files
 load("gg_diamonds.RData")
-# load("gg_fish.RData")
-# load("gg_recess.RData")
-
+load("gg_fish.RData")
+load("gg_recess.RData")
+load("gg_iris.RData")
 
 # There is an advantage to plotting out a graph with just the df and aes(), bc
 # you can always add the other layers later
@@ -249,8 +246,3 @@ ggplot(iris, aes(x = Sepal.Length, y = Sepal.Width)) +
 #   ggplot(df, aes()) + geom_point(position = posn.j)
 
 # width - how much random noise should be added
-
-
-
-
-
