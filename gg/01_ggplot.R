@@ -1,5 +1,3 @@
-# 
-# 
 # author: Alexander C. Hungerford
 # 
 # created: 13 October 2018
@@ -10,8 +8,9 @@
 library(tidyverse)
 data("mtcars")
 load("gg_diamonds.RData")
-# load("gg_fish.RData")
-# load("gg_recess.RData")
+load("gg_fish.RData")
+load("gg_recess.RData")
+load("gg_iris.RData")
 
 
 ############################## Mtcars #########################################
@@ -105,19 +104,3 @@ dia_plot_2 + geom_smooth(aes(color = clarity), se = FALSE)
 # 
 # geom_smooth()
 #    smoothing method to use, eg: lm, glm, gam, loess, Mass::rlm
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

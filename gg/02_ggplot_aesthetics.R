@@ -1,5 +1,3 @@
-#
-#
 # author: Alexander C. Hungerford
 # 
 # date created: 30 October 2018
@@ -8,7 +6,6 @@
 #         Data Visualization with ggplot2
 #         Chapter 3: aesthetics
 # 
-############################################################################### 
 
 # Note, plots will look different than the Datacamp course in color gradients.
 # It's not clear why, probably because of the version of ggplot that was used.
@@ -230,13 +227,3 @@ ggplot(diamonds, aes(x = clarity, y = carat, col = price)) +
 #
 #   good idea to add transparency when you have solid shapes or
 #   use hollow shapes
-
-
-
-
-
-
-
-
-
-
