@@ -2,7 +2,7 @@
 # author: Alexander C. Hungerford
 # created: 17 September 2018
 # 
-# Summary: Data frames
+# Summary: Data frames - BaseR
 #   create a df
 #   select elements in a df
 #   select entire row of df
@@ -15,9 +15,7 @@
 #   head(), str(), data.frame(), $ selector
 #   
 #   subset(), order()
-#
-#
-#
+
 
 
 # columns = variables, rows = observations
@@ -125,9 +123,3 @@ planets_df
 # sort planets by diameter (ascending). Notice diameter column.
 # Also notice the index.
 planets_df[positions, ]
-
-
-
-
-
-
