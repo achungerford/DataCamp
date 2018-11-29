@@ -17,8 +17,6 @@
 #   group_by
 #   
 #
-#   
-#
 # functions: filter(), pipes %>%, arrange(), ggplot(), aes(),
 #            summarize(), group_by(),
 #   
@@ -33,13 +31,24 @@
 #   summarize functions: mean, median, min, max, sum
 
 
-
+# load libraries
 library(gapminder)
 library(dplyr)
 library(ggplot2)
 
-# Show the gapminder dataset
-gapminder
+
+# load external datasets
+load("gg_diamonds.RData")
+load("gg_fish.RData")
+load("gg_recess.RData")
+load("gg_iris.RData")
+
+# import preloaded datasets
+data(mtcars, gapminder)
+
+# preview gapminder dataset
+str(gapminder)
+head(gapminder)
 
 ########################## filter() #####################################
 # filter() to look at a subset of your data based on conditions
