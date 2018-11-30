@@ -15,9 +15,9 @@
 # summarize - calculates summary statistics
 
 
-# select & mutate -   for manipulating variables(columns)
-# filter & arrange -  for manipulating observaions (rows) 
-# summarize - for manipulating groups
+# select & mutate   - for manipulating variables(columns)
+# filter & arrange  - for manipulating observaions (rows) 
+# summarize         - for manipulating groups
 
 
 # "tidy data"
@@ -55,17 +55,7 @@ h1 <- select(hflights, ActualElapsedTime, AirTime, ArrDelay, DepDelay)
 hflights_tbl <- tbl_df(hflights)
 hflights_tbl
 
-# isolate UniqueCarriers
-carriers <- hflights$UniqueCarrier
-
-# creating a lookup table via a named vector
-lut <- c("AA" = "American", "AS" = "Alaska", "B6" = "JetBlue", "CO" = "Continental", 
-         "DL" = "Delta", "OO" = "SkyWest", "UA" = "United", "US" = "US_Airways", 
-         "WN" = "Southwest", "EV" = "Atlantic_Southeast", "F9" = "Frontier", 
-         "FL" = "AirTran", "MQ" = "American_Eagle", "XE" = "ExpressJet", "YV" = "Mesa")
-
-# Add the Carrier column to hflights
-hflights$Carrier <- lut[hflights$UniqueCarrier]
+zz
 
 
 
@@ -192,10 +182,3 @@ m2 <- mutate(hflights,
              TotalTaxi = TaxiIn + TaxiOut,
              ActualGroundTime = ActualElapsedTime - AirTime,
              Diff = TotalTaxi - ActualGroundTime)
-
-
-
-
-
-
-

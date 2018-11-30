@@ -30,4 +30,14 @@ hflights_tbl
 # summarize         - for manipulating groups
 
 
+#################### Exercise: The syntax of summarize
 
+# Use summarize() to print out a summary of hflights containing two variables:
+#   min_dist, the shortest distance flown, and
+#   max_dist, the longest distance flown.
+summarize(hflights, min_dist = min(Distance), max_dist = max(Distance))
+
+# Print out a summary of hflights with a single variable, max_div:
+#   the longest Distance for diverted flights.
+#   You will need one of the four other verbs to do this!
+summarize(filter(hflights, Diverted == 1), max_div = max(Distance))

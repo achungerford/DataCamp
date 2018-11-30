@@ -143,3 +143,10 @@ glimpse(arrange(dtc, CancellationCode))
 
 
 
+# Arrange hflights so that flights by the same carrier appear
+# next to each other and within each carrier, flights that 
+# have larger departure delays appear before flights that
+# have smaller departure delays.
+arrange(hflights, UniqueCarrier, desc(DepDelay))
+
+

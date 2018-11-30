@@ -34,7 +34,7 @@ roulette_vector <- c(-24, -50, 100, -350, 10)
 
 
 
-###################### START Naming Vectors ###################################
+###################### Naming Vectors #########################################
 
 # In the previous exercise, we created a vector with your winnings this week.
 # Each vector element refers to a day of the week but it is hard to tell which
@@ -84,10 +84,6 @@ names(roulette_vector) <- days_vector
 poker_vector
 roulette_vector
 
-############## END Naming Vectors #############################################
-
-
-
 
 
 
@@ -115,7 +111,7 @@ total_daily <- poker_vector + roulette_vector
 total_daily
 
 
-########### START sum() #######################################################
+########################### sum() #############################################
 
 # calculate total winnings using sum()
 total_poker <- sum(poker_vector)
@@ -130,15 +126,9 @@ total_week
 # check if your gains from poker are larger than roulette -- TRUE FALSE
 total_poker > total_roulette
 
-######## END sum() ############################################################
 
 
-
-
-
-
-
-######## START Vector Selection ###############################################
+##################### Vector Selection ##############################
 
 # Goal is to select specific elements of the vector.
 
@@ -173,15 +163,9 @@ poker_start
 # Calculate the average of the elements in poker_start
 mean(poker_start)
 
-######## END Vector Selection #################################################
 
 
-
-
-
-
-
-########## START Selection by Comparison, Logical Operators ###################
+################### Selection by Comparison, Logical Operators ################
 
 # You can use comparison operators on vectors.
 c(4, 5, 6) > 5
@@ -199,7 +183,6 @@ poker_vector[selection_vector]
 
 
 
-
 # Now find out which days you had positive winnings from roulette
 # Do it by TRUE or FALSE
 roulette_selection_vector <- roulette_vector > 0
@@ -207,7 +190,3 @@ roulette_selection_vector
 
 roulette_winning_days <- roulette_vector[roulette_selection_vector]
 roulette_winning_days
-
-
-
-
