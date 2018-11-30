@@ -30,6 +30,23 @@ hflights_tbl
 # summarize         - for manipulating groups
 
 
+# You can use any function you like in summarize() so long as
+# the function can take a vector of data and return a single number.
+# R contains many aggregating functions, as dplyr calls them:
+# 
+# min(x) - minimum value of vector x.
+# max(x) - maximum value of vector x.
+# mean(x) - mean value of vector x.
+# median(x) - median value of vector x.
+# quantile(x, p) - pth quantile of vector x.
+# sd(x) - standard deviation of vector x.
+# var(x) - variance of vector x.
+# IQR(x) - Inter Quartile Range (IQR) of vector x.
+# diff(range(x)) - total range of vector x. 
+ 
+
+
+
 #################### Exercise: The syntax of summarize
 
 # Use summarize() to print out a summary of hflights containing two variables:
@@ -41,3 +58,22 @@ summarize(hflights, min_dist = min(Distance), max_dist = max(Distance))
 #   the longest Distance for diverted flights.
 #   You will need one of the four other verbs to do this!
 summarize(filter(hflights, Diverted == 1), max_div = max(Distance))
+
+
+########### Exercise: Aggregate functions
+
+# Remove rows that have NA ArrDelay: temp1
+temp1 <- filter(hflights, !is.na(ArrDelay))
+
+# Generate summary about ArrDelay column of temp1
+summarize(temp1, 
+          earliest = min(ArrDelay), 
+          average = mean(ArrDelay), 
+          latest = max(ArrDelay), 
+          sd = sd(ArrDelay))
+
+# Keep rows that have no NA TaxiIn and no NA TaxiOut: temp2
+temp2 <- filter(hflights, !is.na(TaxiIn), !is.na(TaxiOut))
+
+# Print the maximum taxiing difference of temp2 with summarize()
+summarize(temp2, max_taxi_diff = max(abs(TaxiIn - TaxiOut)))
