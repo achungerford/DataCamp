@@ -148,5 +148,3 @@ glimpse(arrange(dtc, CancellationCode))
 # have larger departure delays appear before flights that
 # have smaller departure delays.
 arrange(hflights, UniqueCarrier, desc(DepDelay))
-
-
