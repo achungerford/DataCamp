@@ -23,7 +23,8 @@ data(iris, mtcars)
 # .Rdata files
 load("fileName.RData")
 
-
+# View()
+# str()
 
 ############################ Data Manipulation ###############################
 
