@@ -28,4 +28,4 @@
   ${1:functionName} <- function(${2:argument}){
     ${3:body}
   }
-  
+

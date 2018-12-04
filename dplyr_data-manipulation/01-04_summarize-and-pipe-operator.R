@@ -281,3 +281,4 @@ hflights %>%
   summarize(avg = mean(ArrDelay)) %>%
   mutate(rank = rank(avg)) %>%
   arrange(avg)
+
