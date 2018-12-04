@@ -29,6 +29,7 @@ hflights_tbl
 # filter & arrange  - for manipulating observaions (rows) 
 # summarize         - for manipulating groups
 
+# na.rm = TRUE   removes NA values
 
 # dplyr helper functions:
 #   use inside select()
@@ -164,7 +165,7 @@ summarize(aa,
 # Summarize the data set with a value named avg that is the mean diff value.
 hflights %>% 
   mutate(diff = TaxiOut - TaxiIn) %>%
-  filter(!is.na(diff)) %>%
+  filter(!is.na(diff)) %>%    # all NA get removed
   summarize(avg = mean(diff))
 
 
@@ -193,5 +194,90 @@ hflights %>%
             min_dist = min(Distance),
             max_dist = max(Distance))
 
+# pt 2
+hflights %>%
+  mutate(
+    RealTime = ActualElapsedTime + 100, 
+    mph = 60 * Distance / RealTime
+  ) %>%
+  filter(mph < 105 | Cancelled == 1 | Diverted == 1) %>%
+  summarize(n_non = n(),
+            n_dest = n_distinct(Dest),
+            min_dist = min(Distance),
+            max_dist = max(Distance))
 
 
+# Exercise: Advnaced piping
+
+############## how many overnight fligths?
+# filter() the hflights tbl to keep only observations
+      # whose DepTime is not NA,
+      # whose ArrTime is not NA and
+      # for which DepTime exceeds ArrTime.
+# Pipe the result into a summarize() call to create a single summary variable:
+      # num, that simply counts the number of observations.
+hflights %>%
+  filter(!is.na(DepTime),         # removes NAs from DepTime
+         !is.na(ArrTime),         # removes NAs from ArrTime
+         DepTime > ArrTime) %>%
+  summarize(num = n())
+
+
+########### group_by() #######################
+
+# example
+hflights %>% group_by(UniqueCarrier) %>%
+  summarise(avgDep = mean(DepDelay, na.rm = T),
+            avgArr = mean(ArrDelay, na.rm = T)) %>%
+  arrange(avgArr, avgDep)
+
+
+# example - group_by multiple variables
+hflights %>% group_by(UniqueCarrier, Dest) %>%
+  summarize(n_flights = n()) %>%
+  summarize(n_dests = n())
+
+
+# Exercise: Unite and conquer using group_by
+hflights %>%
+  group_by(UniqueCarrier) %>%
+  summarize(
+    p_canc = 100 * mean(Cancelled == 1), 
+    avg_delay = mean(ArrDelay, na.rm = TRUE)
+  ) %>%
+  arrange(avg_delay, p_canc)
+
+
+# combine group_by() and mutate()
+# You can also combine group_by() with mutate().
+#
+# When you mutate grouped data, mutate() will calculate the new variables
+# independently for each group. 
+#
+# This is particularly useful when mutate() uses the rank() function,
+# that calculates within-group rankings.
+
+# rank() takes a group of values and calculates
+# the rank of each value within the group -- ascending, small to big
+rank(c(21, 22, 24, 23))
+
+
+# 
+# filter() the hflights tbl to only keep observations for which
+# ArrDelay is not NA and positive.
+#
+# Use group_by() on the result to group by UniqueCarrier.
+# Next, use summarize() to calculate the average ArrDelay per carrier.
+# Call this summary variable avg.
+#
+# Feed the result into a mutate() call:
+# create a new variable, rank, calculated as rank(avg).
+#
+# Finally, arrange by this new rank variable
+
+hflights %>%
+  filter(!is.na(ArrDelay), ArrDelay > 0) %>%
+  group_by(UniqueCarrier) %>%
+  summarize(avg = mean(ArrDelay)) %>%
+  mutate(rank = rank(avg)) %>%
+  arrange(avg)

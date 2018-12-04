@@ -3,7 +3,7 @@
 #
 # title: Personal cheat sheet
 
-######################## Checking Packages ###################################
+################################## Packages ###################################
 
 # checking installed packages, with versions, very detailed
 sessionInfo()
@@ -14,6 +14,11 @@ sessionInfo()
 # check conlicts
 conflicts(detail=TRUE)
 
+# check pkg dependencies
+tools::package_dependencies("packageName", db = installed.packages())
+
+# check if pkg is a dependency for other packages
+tools::package_dependencies("packageName", db = installed.packages(), reverse = TRUE)
 
 ############################## Loading files ##################################
 
