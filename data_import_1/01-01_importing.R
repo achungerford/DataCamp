@@ -132,4 +132,8 @@ str(hotdogs2)
 # when numbers are written 3,14 instead of 3.14
     # they can't use comma as the delimitter anymore and is why read.csv2()
     # and read.delim2() exist
-
+# example
+read.csv2("data_import_1/states_nay.csv",
+          header = TRUE,
+          stringsAsFactors = FALSE,
+          sep = ";")
