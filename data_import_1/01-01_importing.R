@@ -46,8 +46,13 @@ str(p)
 # reading delimiters ------------------------------------------------------
 
 # tab-delimitted
-  # read.delim("filename.csv", stringsAsFactors = FALSE)
+states <- read.delim("data_import_1/states.txt", stringsAsFactors = FALSE)
+
 
 # delimitter is a forward slash "/" in a .txt file
     # use read.table() -- read any tabular file as data frame
+states2 <- read.table("data_import_1/states_slash.txt",
+                      header = TRUE,
+                      sep = "/",
+                      stringsAsFactors = FALSE)
 
