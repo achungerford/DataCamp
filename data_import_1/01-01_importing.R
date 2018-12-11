@@ -74,3 +74,52 @@ hotdogs2 <- read.table(path,
 
 # Call head() on hotdogs
 head(hotdogs2)
+
+###############################################################################
+
+# Lily wants to have the one with the fewest calories while
+  # Tom wants to have the one with the most sodium.
+hd3 <- read.delim("data_import_1/hotdogs.txt",
+                  header = FALSE,
+                  col.names = c("type", "calories", "sodium"))
+
+# notice factors
+str(hd3)
+
+# Select the hot dog with the least calories: lily
+lily <- hd3[which.min(hd3$calories), ]
+
+# Select the observation with the most sodium: tom
+tom <- hd3[which.max(hd3$sodium), ]
+
+lily
+tom
+
+###############################################################################
+
+# Previous call to import hotdogs.txt
+hotdogs <- read.delim("data_import_1/hotdogs.txt",
+                      header = FALSE,
+                      col.names = c("type", "calories", "sodium"))
+
+# Edit the colClasses argument to import the data correctly, store as hotdogs2
+    # incorrect version:
+# hotdogs2 <- read.delim("data_import_1/hotdogs.txt",
+#                         header = FALSE,
+#                         col.names = c("type", "calories", "sodium"),
+#                         colClasses = NA)
+
+    # corrected:
+hotdogs2 <- read.delim("data_import_1/hotdogs.txt",
+                       header = TRUE, 
+                       col.names = c("type", "calories", "sodium"),
+                       colClasses = c("factor", "NULL", "numeric"))
+
+# compare structures - calories variable gone,
+                      # sodium was int, but now numeric
+str(hotdogs)
+str(hotdogs2)
+
+# read.csv() and read.delim() are wrapper functions to read.table()
+    # they call read.table() behind the scenes
+
