@@ -33,7 +33,7 @@ hflights_tbl
 #   This example keeps the observations in df
 #   for which the variable x is not NA
 #
-# filter(df, !is.na(x))
+# filter(df, !is.na(x))      # removes NA values
 
 
 
@@ -148,3 +148,4 @@ glimpse(arrange(dtc, CancellationCode))
 # have larger departure delays appear before flights that
 # have smaller departure delays.
 arrange(hflights, UniqueCarrier, desc(DepDelay))
+

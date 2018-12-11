@@ -223,7 +223,11 @@ hflights %>%
   summarize(num = n())
 
 
-########### group_by() #######################
+
+
+
+
+################################### group_by() ################################
 
 # example
 hflights %>% group_by(UniqueCarrier) %>%
