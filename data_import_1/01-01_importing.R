@@ -123,3 +123,13 @@ str(hotdogs2)
 # read.csv() and read.delim() are wrapper functions to read.table()
     # they call read.table() behind the scenes
 
+
+# read.csv2() and read.delim2()
+    # these exist to deal with the differences in the way
+    # numbers are represented around the world
+# created files: states_aye.csv and states_naye.csv
+
+# when numbers are written 3,14 instead of 3.14
+    # they can't use comma as the delimitter anymore and is why read.csv2()
+    # and read.delim2() exist
+
