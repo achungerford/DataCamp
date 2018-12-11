@@ -62,3 +62,15 @@ head(hotdogs)
 
 # summary
 summary(hotdogs)
+
+
+# read in using path-independent style
+path <- file.path("data_import_1", "hotdogs.txt")
+
+# Import the hotdogs.txt file, give headers
+hotdogs2 <- read.table(path,
+                       sep = "",
+                       col.names = c("type", "calories", "sodium"))
+
+# Call head() on hotdogs
+head(hotdogs2)
