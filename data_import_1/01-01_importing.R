@@ -45,5 +45,9 @@ str(p)
 
 # reading delimiters ------------------------------------------------------
 
+# tab-delimitted
+  # read.delim("filename.csv", stringsAsFactors = FALSE)
 
+# delimitter is a forward slash "/" in a .txt file
+    # use read.table() -- read any tabular file as data frame
 
