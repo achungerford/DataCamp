@@ -56,3 +56,9 @@ states2 <- read.table("data_import_1/states_slash.txt",
                       sep = "/",
                       stringsAsFactors = FALSE)
 
+# import hotdogts dataset, no header
+hotdogs <- read.delim("data_import_1/hotdogs.txt", header = FALSE)
+head(hotdogs)
+
+# summary
+summary(hotdogs)
