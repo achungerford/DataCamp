@@ -1,7 +1,15 @@
 # 
-# author: Alexander C. Hungerford
-#
-# title: Personal cheat sheet
+# author: "Alexander C. Hungerford"
+# 
+# title: "Personal cheat sheet"
+
+####################### R Studio commands #####################################
+
+"ctrl shift D"
+# duplicates a your highlighted lines of code below your cursor
+
+"hold alt with up/down arrow"
+# this allows you to move lines of code
 
 ################################## Packages ###################################
 
