@@ -61,7 +61,17 @@ load("fileName.RData")
 
 # IMPORTANT
 # This is completely different from doing Add > 'R markdown...'
-# You DO NOT want the 'R markdown...'
+# You DO NOT want the 'R markdown...' which produces a heading of
+
+# ---
+# title: "ggplot-basics"
+# author: "Alexander C. Hungerford"
+# date: "June 1, 2019"
+# output: html_document
+# ---
+
+#### NOTICE: YOU DO NOT WANT output: html_document ###
+
 # Why?
 # Because instead of simply creating a 'fileName.Rmd' & 'fileName.nb.html';
 # the 'R markdown...' creates 'fileName_files/' instead. This is not good if
