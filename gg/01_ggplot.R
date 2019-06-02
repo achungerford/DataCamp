@@ -15,6 +15,15 @@ load("gg_iris.RData")
 
 ############################## Mtcars #########################################
 
+# look at the structure
+str(mtcars)
+
+# view the data in a new tab
+View(mtcars)
+
+# look at the first 5 rows
+head(mtcars)
+
 # notice x-axis is numeric, and contains values that are not in the dataset
 ggplot(mtcars, aes(x = cyl, y = mpg)) + geom_point()
 
