@@ -40,9 +40,9 @@ load("fileName.RData")
 # str()
 
 
-################### Creating an R-markdown-notebook############################
+################### Creating an R Notebook ####################################
 
-# An R markdown notebook is different from just a .Rmd file.
+# An 'R Notebook' is different from just 'R markdown...'.
 
 # Add > 'R Notebook'
 # is the one you want. It's similar to a Jupyter Notebook in python
@@ -54,15 +54,10 @@ load("fileName.RData")
 # ---
 
 
-# It will create the file, but it won't be saved yet. When you click the
-# save button, you'll see a pop-up window. Just name it. Don't try to put an
-# extension on the file yourself. Rstudio will make it a .Rmd while also creating
-# a ".nb.html" file alognside it.
-
 # IMPORTANT
 # This is completely different from doing Add > 'R markdown...'
-# You DO NOT want the 'R markdown...' which produces a heading of
-
+# You DO NOT want the 'R markdown...', which produces a heading of
+#
 # ---
 # title: "ggplot-basics"
 # author: "Alexander C. Hungerford"
@@ -70,12 +65,25 @@ load("fileName.RData")
 # output: html_document
 # ---
 
-#### NOTICE: YOU DO NOT WANT output: html_document ###
+
+# 'R Notebook' will create the file, but it won't be saved yet. When you click
+# the save button, you'll see a pop-up window. Just name it. Don't try 
+# to put an extension on the file yourself. Rstudio will make it a 
+# .Rmd while also creating a ".nb.html" file alognside it.
+
+#### YOU DO NOT WANT output: html_document ####
 
 # Why?
 # Because instead of simply creating a 'fileName.Rmd' & 'fileName.nb.html';
 # the 'R markdown...' creates 'fileName_files/' instead. This is not good if
 # you want some html that can be pushed to github.
+
+
+# Note, there is still the problem with R Notebooks and Github.
+# R Notebooks still don't render on github (whereas Jupyter Notebooks do).
+# There's an issue that's been open for it since 2017. There are a few
+# workarounds, but the issue remains open here:
+# https://github.com/rstudio/rmarkdown/issues/1020
 
 
 
