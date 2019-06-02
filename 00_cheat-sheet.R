@@ -39,6 +39,36 @@ load("fileName.RData")
 # View()
 # str()
 
+
+################### Creating an R-markdown-notebook############################
+
+# An R markdown notebook is different from just a .Rmd file.
+
+# Add > 'R Notebook'
+# is the one you want. It's similar to a Jupyter Notebook in python
+# At the top you will see:
+#
+# ---
+# title: "R Notebook"
+# output: html_notebook
+# ---
+
+
+# It will create the file, but it won't be saved yet. When you click the
+# save button, you'll see a pop-up window. Just name it. Don't try to put an
+# extension on the file yourself. Rstudio will make it a .Rmd while also creating
+# a ".nb.html" file alognside it.
+
+# IMPORTANT
+# This is completely different from doing Add > 'R markdown...'
+# You DO NOT want the 'R markdown...'
+# Why?
+# Because instead of simply creating a 'fileName.Rmd' & 'fileName.nb.html';
+# the 'R markdown...' creates 'fileName_files/' instead. This is not good if
+# you want some html that can be pushed to github.
+
+
+
 ############################ Data Manipulation ###############################
 
 # dplyr
