@@ -51,10 +51,19 @@ gapminder_1952 <- gapminder %>%
 
 Change the scatter plot of gapminder_1952 so that (pop) is on the x-axis and GDP per capita (gdpPercap) is on the y-axis.
 
+#### comparing population & GDP per capita
+
 ```{r}
-# comparing population & GDP per capita
 # put pop on the x-axis and gdpPercap on the y-axis
 ggplot(gapminder_1952, aes(x = pop, y = gdpPercap)) +
   geom_point()
+```
+
+#### comparing population & life expectancy
+
+```{r}
+# Create a scatter plot with pop on the x-axis and lifeExp on the y-axis
+ggplot(gapminder_1952, aes(x = pop, y = lifeExp)) + 
+    geom_point()
 ```
 
