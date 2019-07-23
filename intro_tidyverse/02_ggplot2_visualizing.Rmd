@@ -13,7 +13,7 @@ library(readr)
 
 ## Import data
 
-```{r}
+```{r message=FALSE}
 gapminder <- read_tsv("gapminder.tsv", col_names = TRUE)
 ```
 
@@ -66,4 +66,6 @@ ggplot(gapminder_1952, aes(x = pop, y = gdpPercap)) +
 ggplot(gapminder_1952, aes(x = pop, y = lifeExp)) + 
     geom_point()
 ```
+
+## Log Scales
 
