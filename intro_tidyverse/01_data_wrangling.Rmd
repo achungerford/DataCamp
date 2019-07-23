@@ -3,9 +3,11 @@ title: "Intro to Tidyverse: Data Wrangling"
 output: html_notebook
 ---
 
-This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code. 
+#### Note
 
-Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Ctrl+Shift+Enter*. 
+Column names must be a single word (or_use_underscores). They can't have spaces.
+
+## Setup
 
 ```{r}
 library(dplyr)
@@ -91,7 +93,33 @@ gapminder %>%
     arrange(desc(gdpPercap))
 ```
 
-```{r}
+## `mutate()`
 
+If you want to change one of the variables in your dataset based on the other ones or you want to add a new variable (column).
+
+Information to the right of the equal sign is being evaluated. The variable on the let is what is being replaced.
+
+```{r}
+# reducing population to millions
+gapminder %>%
+    mutate(pop = pop / 1000000)
+```
+
+Now say we want to add a new variable. We have GDP per capita, which is GDP/population, but say we want total GDP.
+
+```{r}
+# create new GDP variable
+gapminder %>%
+    mutate(gdp = gdpPercap * pop)
+```
+
+## Combine the verbs: filter, arrange, mutate
+
+```{r}
+# countries with highest GDP in 2007
+gapminder %>%
+    mutate(gdp = gdpPercap * pop) %>%
+    filter(year == 2007) %>%
+    arrange(desc(gdp))
 ```
 
