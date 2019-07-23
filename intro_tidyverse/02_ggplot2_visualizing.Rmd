@@ -31,12 +31,30 @@ Suppose you want to examine the relationship between a country's wealth and its 
 
 1. the data we're visualizing (gapminder_07)
 2. mapping variables in your data to aesthetics in your graph
-3. sepcify the type of graph you're creating by adding a geom layer (for example)
+3. sepcify the type of graph you're creating by adding a geom layer (for example). Geom means you're adding a type of geometeric object to the graph. The point indicates a scatterplot.
 
 
 ```{r}
 # relationship bewteen a country's wealth and life expectancy
 ggplot(gapminder_07, aes(x = gdpPercap, y = lifeExp)) +
     geom_point()
+```
+
+## 1952 Examples
+
+Filter gapminder for observations from the year 1952, and assign it to a new dataset gapminder_1952.
+
+```{r}
+gapminder_1952 <- gapminder %>%
+    filter(year == 1952)
+```
+
+Change the scatter plot of gapminder_1952 so that (pop) is on the x-axis and GDP per capita (gdpPercap) is on the y-axis.
+
+```{r}
+# comparing population & GDP per capita
+# put pop on the x-axis and gdpPercap on the y-axis
+ggplot(gapminder_1952, aes(x = pop, y = gdpPercap)) +
+  geom_point()
 ```
 
