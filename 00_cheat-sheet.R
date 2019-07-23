@@ -1,57 +1,7 @@
-# 
-# author: "Alexander C. Hungerford"
-# 
-# title: "Personal cheat sheet"
-
-####################### R Studio commands #####################################
-
-"ctrl shift D"
-# duplicates a your highlighted lines of code below your cursor
-
-"hold alt with up/down arrow"
-# this allows you to move lines of code
-
-################################## Packages ###################################
-
-# checking installed packages, with versions, very detailed
-sessionInfo()
-
-# list the packages only
-(.packages())
-
-# check conlicts
-conflicts(detail=TRUE)
-
-# check pkg dependencies
-tools::package_dependencies("packageName", db = installed.packages())
-
-# check if pkg is a dependency for other packages
-tools::package_dependencies("packageName", db = installed.packages(), reverse = TRUE)
-
-############################## Loading files ##################################
-
-# R's built-in datasets
-data(iris, mtcars)
-
-# .Rdata files
-load("fileName.RData")
-
-# View()
-# str()
-
 
 ################### Creating an R Notebook ####################################
 
-# An 'R Notebook' is different from just 'R markdown...'.
 
-# Add > 'R Notebook'
-# is the one you want. It's similar to a Jupyter Notebook in python
-# At the top you will see:
-#
-# ---
-# title: "R Notebook"
-# output: html_notebook
-# ---
 
 
 # IMPORTANT

@@ -1,0 +1,97 @@
+---
+title: "Intro to Tidyverse: Data Wrangling"
+output: html_notebook
+---
+
+This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code. 
+
+Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Ctrl+Shift+Enter*. 
+
+```{r}
+library(dplyr)
+library(readr)
+```
+
+
+## Import data
+
+```{r}
+gapminder <- read_tsv("gapminder.tsv", col_names = TRUE)
+```
+
+
+## What type of data do we have?
+
+```{r}
+# gapminder is a data frame: data.frame
+# specifically, a special data frame called a tibble
+class(gapminder)
+```
+
+
+## Look at the structure
+
+```{r}
+str(gapminder)
+```
+
+
+## `filter()`
+
+Filtering data gives you a subset of rows. 
+
+```{r}
+# fiter for year 2007
+gapminder %>%
+    filter(year == 2007)
+```
+
+Notice that we went from 1704 rows to 142 rows. Now let's filter by country.
+
+```{r}
+# filter by country
+gapminder %>%
+    filter(country == "United States")
+```
+
+We can also specify multiple conditions in a filter. Here, we only want the single observation for the year 2007 where the country is the United States.
+
+```{r}
+# get datapoint: year 2007, USA
+gapminder %>%
+    filter(year == 2007, country == "United States")
+```
+
+
+## `arrange()`
+
+Arrange sorts the rows (observations) in a data set in ascending or descending order based on one of its columns (variables). You specify what column you want to arrange by.
+
+```{r}
+# sor in ascending order
+gapminder %>%
+    arrange(gdpPercap)
+```
+
+Say we wan to sort in descending order instead.
+
+```{r}
+# sort descending order
+gapminder %>%
+    arrange(desc(gdpPercap))
+```
+
+Say you wanted to find the highest GDP per capita countries in a single year. Combine `filter()` and `arrange()` to get your data.
+
+```{r}
+# choose observations only in 2007, rank highest GPD to lowest
+# highest GDP per capita countries in 2007 
+gapminder %>%
+    filter(year == 2007) %>%
+    arrange(desc(gdpPercap))
+```
+
+```{r}
+
+```
+

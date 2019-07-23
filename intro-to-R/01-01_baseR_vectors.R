@@ -1,17 +1,17 @@
-'''
-Author: Alexander C. Hungerford
-Title: Intro to R - Data Camp
-Created: 13 September 2018
-
-Summary:
-  variable assignment, vectors
-  
-  creating vectors, naming vectors and elements
-  arithmetic with vectors 
-  slicing vectors - numerically, by name, by comparison
-
-  functions: class(), names(), sum(), mean()
-'''
+# ###
+# Author: Alexander C. Hungerford
+# Title: Intro to R - Data Camp
+# Created: 13 September 2018
+# 
+# Summary:
+#   variable assignment, vectors
+#   
+#   creating vectors, naming vectors and elements
+#   arithmetic with vectors 
+#   slicing vectors - numerically, by name, by comparison
+# 
+#   functions: class(), names(), sum(), mean()
+# ###
 
 
 # Declare variables of different types
@@ -43,15 +43,20 @@ roulette_vector <- c(-24, -50, 100, -350, 10)
 # 
 # You can give a name to the elements of a vector with the names() function
 
-# data is in some_vector
+# data is in variable: some_vector
 some_vector <- c("John Doe", "poker player")
 
+# put in column names; you're naming the elements of a vector
 names(some_vector) <- c("Name", "Profession")
+
+# show variable with named elements
 some_vector
 
-# Assign days as names of poker_vector
+# Assign a name to each element of the poker vector
 names(poker_vector) <- c("Monday", "Tuesday", "Wednesday",
                          "Thursday", "Friday")
+
+# show the poker vector winnings with names
 poker_vector
 
 
@@ -61,26 +66,23 @@ poker_vector
 # as the days of the week. However, when you look at it from a higher
 # perspective, there is a more efficient way to do this, namely,
 # to assign the days of the week vector to a variable!
-# 
+
+
+
 # Just like you did with your poker and roulette returns,
 # you can also create a variable that contains the days of the week.
 # This way you can use and re-use it.
-
-
-# Poker winnings from Monday to Friday
 poker_vector <- c(140, -50, 20, -120, 240)
-
-# Roulette winnings from Monday to Friday
 roulette_vector <- c(-24, -50, 100, -350, 10)
 
-# Create the variable days_vector using weekdays
+# Create a named vector that you can reuse.
 days_vector <- c("Monday", "Tuesday", "Wednesday", "Thursday", "Friday")
 
-# Assign the names of the day to roulette_vector and poker_vector
+# now we assign the vector of days of the week and call names(vector)
 names(poker_vector) <- days_vector
 names(roulette_vector) <- days_vector
 
-# show
+# show the vectors with the col names
 poker_vector
 roulette_vector
 
@@ -88,12 +90,11 @@ roulette_vector
 
 
 # If you sum two vectors in R, it takes the element-wise sum.
-# the following three statements are completely equivalent:
-# 
-# c(1, 2, 3) + c(4, 5, 6)
-# c(1+4, 2+5, 3+6)
-# c(5, 7, 9)
-
+# first + first, second + second, third + third
+# These are all equivalent
+c(1, 2, 3) + c(4, 5, 6)
+c(1+4, 2+5, 3+6)
+c(5, 7, 9)
 
 
 # You can also do calculations with varialbes that represent vectors
