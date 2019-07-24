@@ -40,6 +40,9 @@ ggplot(gapminder_07, aes(x = gdpPercap, y = lifeExp)) +
     geom_point()
 ```
 
+The probelm with the above plot and some others below is the enormous distribution in scale of the x-axis, with some countries having GDP per capita in the tens of thousands while others are only in the hundreds. When you have a wide distribution like that many observations get crammed into the same area of the plot and can be hard to differentiate. In these graphs, we see it on the left side.
+
+
 ## 1952 Examples
 
 Filter gapminder for observations from the year 1952, and assign it to a new dataset gapminder_1952.
@@ -68,4 +71,14 @@ ggplot(gapminder_1952, aes(x = pop, y = lifeExp)) +
 ```
 
 ## Log Scales
+
+When you have data with a wide distribution range it's helpful to use a log scale on the axises. A log scale is a scale where each fixed distance represents a multiplication of the value. So a log-base-10 scale means that the second tick mark on the axis represents a 10x increase over the previous one. Think 10...100...1000...1000.
+
+The plot below is the same data, but now each unit on the x-axis represents a change of 10 times the GDP. And we can see the relationship now looks more linear.
+
+```{r}
+ggplot(gapminder_07, aes(x = gdpPercap, y = lifeExp)) +
+  geom_point() +
+  scale_x_log10()
+```
 

@@ -9,7 +9,7 @@ Column names must be a single word (or_use_underscores). They can't have spaces.
 
 ## Setup
 
-```{r}
+```{r message=FALSE}
 library(dplyr)
 library(readr)
 ```
@@ -17,7 +17,7 @@ library(readr)
 
 ## Import data
 
-```{r}
+```{r message=FALSE}
 gapminder <- read_tsv("gapminder.tsv", col_names = TRUE)
 ```
 
