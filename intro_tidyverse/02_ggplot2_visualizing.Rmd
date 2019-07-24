@@ -82,3 +82,42 @@ ggplot(gapminder_07, aes(x = gdpPercap, y = lifeExp)) +
   scale_x_log10()
 ```
 
+## 1952 Examples: x-axis on Log10 scale
+
+```{r}
+ggplot(gapminder_1952, aes(x = pop, y = lifeExp)) +
+  geom_point() +
+  scale_x_log10()
+```
+
+## 1952 Examples: both x and y axis on Log10 scale
+
+```{r}
+ggplot(gapminder_1952, aes(x = pop, y = gdpPercap)) +
+  geom_point() +
+  scale_x_log10() +
+  scale_y_log10()
+```
+
+## Add color & size to plots
+
+Continent is a categorical variable. A good way to represent categorical variables is using color. 
+
+```{r}
+# added color
+ggplot(gapminder_07, aes(x = gdpPercap, y = lifeExp, color = continent)) +
+  geom_point() +
+  scale_x_log10()
+```
+
+Population is numerical value so a good way to represent it is in the size of the scattterplot points.
+
+```{r}
+# including population as size of points
+ggplot(gapminder_07, aes(x = gdpPercap, y = lifeExp,
+                         color = continent,
+                         size = pop)) +
+  geom_point() +
+  scale_x_log10()
+```
+
