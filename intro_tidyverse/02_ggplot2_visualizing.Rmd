@@ -11,20 +11,22 @@ library(ggplot2)
 library(readr)
 ```
 
+
 ## Import data
 
 ```{r message=FALSE}
 gapminder <- read_tsv("gapminder.tsv", col_names = TRUE)
 ```
 
-When you're working on visualizing only a subset of data its useful to save that data as a new data frame.
+
+## Subset the Data
+
+When you're working on visualizing only a subset of data its useful to save that data as a new data frame. These examples are working with the data from 2007 so we save that as a new data frame.
 
 ```{r}
 gapminder_07 <- gapminder %>%
     filter(year == 2007)
 ```
-
-Suppose you want to examine the relationship between a country's wealth and its life expectancy. You could put GDP per capita on the x-axis and life expectancy on the y-axis
 
 
 ## Three parts to a ggplot graph
@@ -33,42 +35,16 @@ Suppose you want to examine the relationship between a country's wealth and its 
 2. mapping variables in your data to aesthetics in your graph
 3. sepcify the type of graph you're creating by adding a geom layer (for example). Geom means you're adding a type of geometeric object to the graph. The point indicates a scatterplot.
 
+Suppose you want to examine the relationship between a country's wealth and its life expectancy. You could put GDP per capita on the x-axis and life expectancy on the y-axis
 
 ```{r}
-# relationship bewteen a country's wealth and life expectancy
+# relationship bewteen a country's wealth and life expectancy for year 2007
 ggplot(gapminder_07, aes(x = gdpPercap, y = lifeExp)) +
     geom_point()
 ```
 
 The probelm with the above plot and some others below is the enormous distribution in scale of the x-axis, with some countries having GDP per capita in the tens of thousands while others are only in the hundreds. When you have a wide distribution like that many observations get crammed into the same area of the plot and can be hard to differentiate. In these graphs, we see it on the left side.
 
-
-## 1952 Examples
-
-Filter gapminder for observations from the year 1952, and assign it to a new dataset gapminder_1952.
-
-```{r}
-gapminder_1952 <- gapminder %>%
-    filter(year == 1952)
-```
-
-Change the scatter plot of gapminder_1952 so that (pop) is on the x-axis and GDP per capita (gdpPercap) is on the y-axis.
-
-#### comparing population & GDP per capita
-
-```{r}
-# put pop on the x-axis and gdpPercap on the y-axis
-ggplot(gapminder_1952, aes(x = pop, y = gdpPercap)) +
-  geom_point()
-```
-
-#### comparing population & life expectancy
-
-```{r}
-# Create a scatter plot with pop on the x-axis and lifeExp on the y-axis
-ggplot(gapminder_1952, aes(x = pop, y = lifeExp)) + 
-    geom_point()
-```
 
 ## Log Scales
 
@@ -82,33 +58,21 @@ ggplot(gapminder_07, aes(x = gdpPercap, y = lifeExp)) +
   scale_x_log10()
 ```
 
-## 1952 Examples: x-axis on Log10 scale
 
-```{r}
-ggplot(gapminder_1952, aes(x = pop, y = lifeExp)) +
-  geom_point() +
-  scale_x_log10()
-```
-
-## 1952 Examples: both x and y axis on Log10 scale
-
-```{r}
-ggplot(gapminder_1952, aes(x = pop, y = gdpPercap)) +
-  geom_point() +
-  scale_x_log10() +
-  scale_y_log10()
-```
-
-## Add color & size to plots
+## Add Color
 
 Continent is a categorical variable. A good way to represent categorical variables is using color. 
 
 ```{r}
 # added color
-ggplot(gapminder_07, aes(x = gdpPercap, y = lifeExp, color = continent)) +
+ggplot(gapminder_07, aes(x = gdpPercap, y = lifeExp,
+                         color = continent)) +
   geom_point() +
   scale_x_log10()
 ```
+
+
+## Add Size
 
 Population is numerical value so a good way to represent it is in the size of the scattterplot points.
 
@@ -121,7 +85,68 @@ ggplot(gapminder_07, aes(x = gdpPercap, y = lifeExp,
   scale_x_log10()
 ```
 
-## 1952 Examples: add size & color
+
+## Faceting: Divide Your Plot into Smaller Subplots
+
+The tilde `~` means "by", so, facet by continent.
+
+```{r}
+ggplot(gapminder_07, aes(x = gdpPercap, y = lifeExp)) +
+  geom_point() +
+  scale_x_log10() +
+  facet_wrap(~ continent)
+```
+
+
+## 1952 Examples
+
+Filter gapminder for observations from the year 1952, and assign it to a new dataset gapminder_1952.
+
+```{r}
+# subset the data
+gapminder_1952 <- gapminder %>%
+    filter(year == 1952)
+```
+
+### Example 1: Y-axis is GDP per capita
+#### Population (x-axis) & GDP per capita (y-axis)
+
+```{r}
+# population on x-axis, GDP per capita on y-axis
+ggplot(gapminder_1952, aes(x = pop, y = gdpPercap)) +
+  geom_point()
+```
+
+
+#### Log10 scale for both x-axis & y-axis
+
+```{r}
+ggplot(gapminder_1952, aes(x = pop, y = gdpPercap)) +
+  geom_point() +
+  scale_x_log10() +
+  scale_y_log10()
+```
+
+### Example 2: Y-axis is Life Expectancy
+#### Population (x-axis) & Life Expectancy (y-axis)
+
+```{r}
+# pop on the x-axis and lifeExp on the y-axis
+ggplot(gapminder_1952, aes(x = pop, y = lifeExp)) + 
+    geom_point()
+```
+
+
+#### x-axis on Log10 scale
+
+```{r}
+ggplot(gapminder_1952, aes(x = pop, y = lifeExp)) +
+  geom_point() +
+  scale_x_log10()
+```
+
+
+#### Add Color
 
 ```{r}
 # including color
@@ -130,6 +155,9 @@ ggplot(gapminder_1952, aes(x = pop, y = lifeExp,
   geom_point() +
   scale_x_log10()
 ```
+
+
+#### Add size
 
 ```{r}
 # including size
@@ -140,29 +168,26 @@ ggplot(gapminder_1952, aes(x = pop, y = lifeExp,
   scale_x_log10()
 ```
 
-## Faceting: Divide Your Plot into Smaller Subplots
 
-The tilde means "by", so, facet by continent.
+#### Facet by Continent
 
-```{r}
-ggplot(gapminder_07, aes(x = gdpPercap, y = lifeExp)) +
-  geom_point() +
-  scale_x_log10() +
-  facet_wrap(~ continent)
-```
-
-## 1952 Examples: Facet by Continent
+We remove the color aesthetic because all the points in each graph would be the same color and it would add an unncessary legend.
 
 ```{r}
+# Facet by continent, need to remove color
 ggplot(gapminder_1952, aes(x = pop, y = lifeExp)) +
   geom_point() +
   scale_x_log10() +
   facet_wrap(~ continent)
 ```
 
-## 1952 Examples: Facet by Year
+
+#### Facet by Year
+
+Notice that we are no longer using a subset of data such as `gapminder_1952`. We are using the full data set because we're working with data from more than one year.
 
 ```{r}
+# include color, size, facet by year
 ggplot(gapminder, aes(x = gdpPercap, y = lifeExp,
                       color = continent,
                       size = pop)) +
@@ -170,4 +195,3 @@ ggplot(gapminder, aes(x = gdpPercap, y = lifeExp,
   scale_x_log10() +
   facet_wrap(~ year)
 ```
-
