@@ -88,7 +88,9 @@ ggplot(gapminder_07, aes(x = gdpPercap, y = lifeExp,
 
 ## Faceting: Divide Your Plot into Smaller Subplots
 
-The tilde `~` means "by", so, facet by continent.
+The tilde `~` means "by".
+
+**Facet by Continent**
 
 ```{r}
 ggplot(gapminder_07, aes(x = gdpPercap, y = lifeExp)) +
@@ -96,6 +98,173 @@ ggplot(gapminder_07, aes(x = gdpPercap, y = lifeExp)) +
   scale_x_log10() +
   facet_wrap(~ continent)
 ```
+
+
+**Facet by Year**
+
+Notice that we are no longer using a subset of data such as `gapminder_07`. We are using the full data set because we're working with data from more than one year.
+
+```{r}
+# include color, size, facet by year
+ggplot(gapminder, aes(x = gdpPercap, y = lifeExp,
+                      color = continent,
+                      size = pop)) +
+  geom_point() +
+  scale_x_log10() +
+  facet_wrap(~ year)
+```
+
+
+## `summarize()`
+
+`summarize()` many rows (observations) into a single data point
+
+You can summarize with the following functions: <br>
+`sum()` <br> `mean` <br> `median()` <br> `min()` <br> `max()` <br>
+
+
+```{r}
+# get average life expectancy across all countries and years
+gapminder %>%
+  summarize(meanLifeExp = mean(lifeExp))
+
+```
+
+
+But it doesn't really make sense to summarize across all countries and all years. It may make more sense to get the averages in a particular year, then summmarize the result
+
+```{r}
+# average life expectancy in the year 2007
+gapminder %>%
+  filter(year == 2007) %>%
+  summarize(meanLifeExp = mean(lifeExp))
+```
+
+
+You can create multiple summaries at once. Suppose you also want the total population in 2007.
+
+```{r}
+# summarize two variables at once
+gapminder %>%
+  filter(year == 2007) %>%
+  summarize(meanLifeExp = mean(lifeExp),
+            totalPop = sum(pop))
+```
+
+
+#### practice
+
+```{r}
+# find median life expectancy
+gapminder %>%
+  summarize(medianLifeExp = median(lifeExp))
+```
+
+```{r}
+# Filter for 1957 then summarize the median life expectancy
+gapminder %>%
+    filter(year == 1957) %>%
+    summarize(medianLifeExp = median(lifeExp))
+```
+
+
+```{r}
+# Filter for 1957 then summarize the median life expectancy and the maximum GDP per capita
+gapminder %>%
+  filter(year == 1957) %>%
+  summarize(medianLifeExp = median(lifeExp),
+            maxGdpPercap = max(gdpPercap))
+```
+
+
+## `group_by()`
+
+The `group_by()` function lets you summarize within groups instead of summarizing th eentire data set.
+
+What if we're just interested for the average for each year of the data set? This replaces `filter(year == 2007)`.
+
+```{r}
+# subset data by year for all the countries
+# then summarize mean life expectancy & population
+gapminder %>%
+    group_by(year) %>%
+    summarize(meanLifeExp = mean(lifeExp),
+              totalPop = sum(pop))
+```
+
+
+
+
+
+
+
+
+
+
+
+
+# Section 5
+
+# Line Plots (time series data)
+
+Line plots are useful for showing change over time. They help emphasize that what we care about is the **tred** instead of the value at a specific point in time.
+
+```{r}
+# line plot
+
+ggplot(year_continent, aes(x = year, y = meanLifeExp, color ))
+```
+
+
+
+# Bar Plots (compare categories)
+
+Bar plots are useful for comparing statistics for each category of several categories.
+
+
+# Histograms (distribution of numeric variable)
+
+Histograms show the distribution of a 1-dimensional numeric variable.
+
+
+# Box Plots (distribution of a numeric variable over several categories)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 ## 1952 Examples
@@ -181,17 +350,3 @@ ggplot(gapminder_1952, aes(x = pop, y = lifeExp)) +
   facet_wrap(~ continent)
 ```
 
-
-#### Facet by Year
-
-Notice that we are no longer using a subset of data such as `gapminder_1952`. We are using the full data set because we're working with data from more than one year.
-
-```{r}
-# include color, size, facet by year
-ggplot(gapminder, aes(x = gdpPercap, y = lifeExp,
-                      color = continent,
-                      size = pop)) +
-  geom_point() +
-  scale_x_log10() +
-  facet_wrap(~ year)
-```
