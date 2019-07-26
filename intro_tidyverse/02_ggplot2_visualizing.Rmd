@@ -193,57 +193,118 @@ gapminder %>%
 ```
 
 
-
-
-
-
-
-
-
-
-
-
-# Section 5
-
-# Line Plots (time series data)
-
-Line plots are useful for showing change over time. They help emphasize that what we care about is the **tred** instead of the value at a specific point in time.
+Summarize by continent.
 
 ```{r}
-# line plot
+# year 2007 data, group by continent
+gapminder %>%
+    filter(year == 2007) %>%
+    group_by(continent) %>%
+    summarize(meanLifeExp = mean(lifeExp),
+              totalPop = sum(pop))
 
-ggplot(year_continent, aes(x = year, y = meanLifeExp, color ))
+```
+
+
+Now, we're interested in how these changed over time. This will help you get to per year per capita information.
+
+```{r}
+# summarize by continent and year
+gapminder %>%
+    group_by(year, continent) %>%
+    summarize(meanLifeExp = mean(lifeExp),
+              totalPop = sum(pop))
+```
+
+
+#### practice
+
+Summarize by year.
+
+```{r}
+# Find median life expectancy and maximum GDP per capita in each year
+gapminder %>% group_by(year) %>% 
+    summarize(medianLifeExp = median(lifeExp),
+              maxGdpPercap = max(gdpPercap))
+```
+
+
+Summarize by continent
+
+```{r}
+# Find median life expectancy and maximum GDP per capita in each continent in 1957
+gapminder %>%
+    filter(year == 1957) %>%
+    group_by(continent) %>%
+    summarize(medianLifeExp = median(lifeExp),
+              maxGdpPercap = max(gdpPercap))
+```
+
+
+Summarize by continent and year.
+
+```{r}
+# Find median life expectancy and maximum GDP per capita in each year/continent combination
+gapminder %>%
+    group_by(continent, year) %>%
+    summarize(medianLifeExp = median(lifeExp),
+              maxGdpPercap = max(gdpPercap))
 ```
 
 
 
-# Bar Plots (compare categories)
+
+
+## Visualizing Summarized Data
+
+Subset your data by year
+```{r}
+# summarized data by year
+by_year <- gapminder %>% 
+    group_by(year) %>% 
+    summarize(totalPop = sum(pop),
+              meanLifeExp = mean(lifeExp))
+
+by_year
+    
+```
+
+
+#### Line Plots (time series data)
+
+Line plots are useful for showing change over time. They help emphasize that what we care about is the **trend** instead of the value at a specific point in time.
+
+```{r}
+# visualizing population over time
+ggplot(by_year, aes(x = year, y = totalPop)) +
+    geom_point()
+```
+
+
+The population growth distribution is so large that tye y-axis is in scientific notation. The graph is also a little misleading because it doesn't include zero so you don't have a sence of how much the population grew relative to where it was when it started.
+
+#### `expand_limits(y = 0)`
+
+```{r}
+
+```
+
+
+
+
+
+
+#### Bar Plots (compare categories)
 
 Bar plots are useful for comparing statistics for each category of several categories.
 
 
-# Histograms (distribution of numeric variable)
+#### Histograms (distribution of numeric variable)
 
 Histograms show the distribution of a 1-dimensional numeric variable.
 
 
-# Box Plots (distribution of a numeric variable over several categories)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+#### Box Plots (distribution of a numeric variable over several categories)
 
 
 
