@@ -117,7 +117,7 @@ ggplot(gapminder, aes(x = gdpPercap, y = lifeExp,
 
 ## `summarize()`
 
-`summarize()` many rows (observations) into a single data point
+`summarize()` many rows (observations) into a single data point.
 
 You can summarize with the following functions: <br>
 `sum()` <br> `mean` <br> `median()` <br> `min()` <br> `max()` <br>
@@ -135,9 +135,7 @@ But it doesn't really make sense to summarize across all countries and all years
 
 ```{r}
 # average life expectancy in the year 2007
-gapminder %>%
-  filter(year == 2007) %>%
-  summarize(meanLifeExp = mean(lifeExp))
+gapminder %>%filter(year == 2007) %>% summarize(meanLifeExp = mean(lifeExp))
 ```
 
 
@@ -145,9 +143,7 @@ You can create multiple summaries at once. Suppose you also want the total popul
 
 ```{r}
 # summarize two variables at once
-gapminder %>%
-  filter(year == 2007) %>%
-  summarize(meanLifeExp = mean(lifeExp),
+gapminder %>% filter(year == 2007) %>% summarize(meanLifeExp = mean(lifeExp),
             totalPop = sum(pop))
 ```
 
@@ -257,7 +253,8 @@ gapminder %>%
 
 ## Visualizing Summarized Data
 
-Subset your data by year
+Subset your data by year.
+
 ```{r}
 # summarized data by year
 by_year <- gapminder %>% 
@@ -266,7 +263,6 @@ by_year <- gapminder %>%
               meanLifeExp = mean(lifeExp))
 
 by_year
-    
 ```
 
 
@@ -286,17 +282,99 @@ The population growth distribution is so large that tye y-axis is in scientific 
 #### `expand_limits(y = 0)`
 
 ```{r}
+# same as above, but y-axis shows the 0
+ggplot(by_year, aes(x = year, y = totalPop)) +
+    geom_point() +
+    expand_limits(y = 0)
+```
 
+
+Now we can see that the population is almost tripling during this time.
+
+```{r}
+# summarize by year and continent
+by_year_continent <- gapminder %>% 
+    group_by(year, continent) %>%
+    summarize(totalPop = sum(pop),
+              meanLifeExp = mean(lifeExp))
+
+by_year_continent
+```
+
+
+By setting color = continent, you can show five separate trends on the same graph.
+
+```{r}
+ggplot(by_year_continent, aes(x = year, y = totalPop, color = continent)) +
+    geom_point() +
+    expand_limits(y = 0)
 ```
 
 
 
+#### practice
 
+Visualizing median GDP per capita over time.
+
+```{r}
+# subset data: group by year, summarize median GDP per capita
+byYear <- gapminder %>%
+  group_by(year) %>%
+  summarize(medianGdpPercap = median(gdpPercap))
+```
+
+
+```{r}
+# line plot showing the change in median GDP per capita over time
+ggplot(byYear, aes(x = year, y = medianGdpPercap)) +
+  geom_line() +
+  expand_limits(y = 0)
+```
+
+
+In the last exercise you used a line plot to visualize the increase in median GDP per capita over time. Now you'll examine the change within each continent.
+
+```{r}
+# Summarize the median gdpPercap by year & continent, save as by_year_continent
+byYear_continent <- gapminder %>%
+  group_by(year, continent) %>%
+  summarize(medianGdpPercap = median(gdpPercap))
+
+byYear_continent
+```
+
+
+```{r}
+# Create a line plot showing the change in medianGdpPercap by continent over time
+ggplot(byYear_continent, aes(x = year, y = medianGdpPercap,
+                             color = continent)) +
+  geom_line() +
+  expand_limits(y = 0)
+```
 
 
 #### Bar Plots (compare categories)
 
 Bar plots are useful for comparing statistics for each category of several categories.
+
+**video exercises:**
+
+```{r}
+# summarize by continent
+by_continent <- gapminder %>% 
+  filter(year == 2007) %>% 
+  group_by(continent) %>% 
+  summarize(meanLifeExp = mean(lifeExp))
+
+by_continent
+```
+
+```{r}
+# bar plot by continent
+ggplot(by_continent, x = continent, y = meanLifeExp) +
+```
+
+
 
 
 #### Histograms (distribution of numeric variable)
@@ -305,25 +383,6 @@ Histograms show the distribution of a 1-dimensional numeric variable.
 
 
 #### Box Plots (distribution of a numeric variable over several categories)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
